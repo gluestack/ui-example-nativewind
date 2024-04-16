@@ -50,7 +50,7 @@
     "react-dom": "18.2.0",
     "react-native": "latest",
     "react-native-reanimated": "^3.8.1",
-    "react-native-svg": "^13.4.0",
+    "react-native-svg": "^15.1.0",
     "react-native-web": "~0.19.6",
     "tailwindcss": "^3.4.3"
   },
