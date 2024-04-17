@@ -4,8 +4,8 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "web": "expo start --web"
   },
   "dependencies": {
@@ -45,9 +45,9 @@
     "expo": "~50.0.14",
     "expo-status-bar": "~1.11.1",
     "lucide-react-native": "^0.368.0",
-    "nativewind": "latest",
+    "nativewind": "4.0.36",
     "react": "latest",
-    "react-dom": "18.2.0",
+    "react-dom": "^18.2.0",
     "react-native": "latest",
     "react-native-reanimated": "^3.8.1",
     "react-native-svg": "^15.1.0",
