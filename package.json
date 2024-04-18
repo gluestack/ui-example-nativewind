@@ -7,7 +7,8 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "build": "echo 'Hello world'"
+    "build": "echo 'Hello world'",
+    "start:web": "serve dist --single"
   },
   "dependencies": {
     "@expo-google-fonts/inter": "^0.2.3",
@@ -54,7 +55,8 @@
     "react-native-svg": "^15.1.0",
     "react-native-web": "~0.19.6",
     "tailwindcss": "^3.4.3",
-    "expo-updates": "~0.24.12"
+    "expo-updates": "~0.24.12",
+    "serve": "latest"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
