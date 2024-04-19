@@ -7,7 +7,7 @@ module.exports = {
   ],
   presets: [require('nativewind/preset')],
   safelist: [
-    'border-primary-600',
+    'border-primary-600', 'border-primary-800'
   ],
   theme: {
     extend: {

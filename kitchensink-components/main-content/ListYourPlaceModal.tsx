@@ -464,8 +464,8 @@ const ModalContent3 = ({ setModalVisible, toast }: any) => {
             {/* input: example */}
             <Input className="flex-1">
               <InputField
+                keyboardType="numeric"
                 placeholder="Phone number"
-                // keyboardType="number-pad"
               />
             </Input>
           </HStack>
