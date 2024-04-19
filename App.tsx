@@ -3,14 +3,14 @@ import React from "react";
 import { SafeAreaView } from "react-native";
 import { GluestackUIProvider as NativewindProvider } from "./components/ui/gluestack-ui-provider";
 import HomestayPage from "./kitchensink-components/HomestayPage";
-import { useFonts } from "expo-font";
-import {
-  Inter_400Regular,
-  Inter_500Medium,
-  Inter_600SemiBold,
-  Inter_700Bold,
-  Inter_900Black,
-} from "@expo-google-fonts/inter";
+// import { useFonts } from "expo-font";
+// import {
+//   Inter_400Regular,
+//   Inter_500Medium,
+//   Inter_600SemiBold,
+//   Inter_700Bold,
+//   Inter_900Black,
+// } from "@expo-google-fonts/inter";
 
 type ThemeContextType = {
   colorMode?: "dark" | "light";
@@ -25,17 +25,18 @@ export const ThemeContext = React.createContext<ThemeContextType>({
 export default function App() {
   const [colorMode, setColorMode] = React.useState<"dark" | "light">("light");
 
-  const [fontsLoaded] = useFonts({
-    Inter_400Regular,
-    Inter_500Medium,
-    Inter_600SemiBold,
-    Inter_700Bold,
-    Inter_900Black,
-  });
+  //TODO: This is breaking the production web app, need to fix this.
+  // const [fontsLoaded] = useFonts({
+  //   Inter_400Regular,
+  //   Inter_500Medium,
+  //   Inter_600SemiBold,
+  //   Inter_700Bold,
+  //   Inter_900Black,
+  // });
 
-  if (!fontsLoaded) {
-    return null;
-  }
+  // if (!fontsLoaded) {
+  //   return null;
+  // }
 
   const toggleColorMode = async () => {
     setColorMode((prev) => (prev === "light" ? "dark" : "light"));
