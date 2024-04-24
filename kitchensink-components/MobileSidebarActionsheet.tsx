@@ -23,9 +23,9 @@ const MobileSidebarActionsheet = ({
         <ActionsheetDragIndicatorWrapper>
           <ActionsheetDragIndicator />
         </ActionsheetDragIndicatorWrapper>
-        <ActionsheetScrollView>
-          <Sidebar />
-        </ActionsheetScrollView>
+        {/* <ActionsheetScrollView> */}
+        <Sidebar />
+        {/* </ActionsheetScrollView> */}
       </ActionsheetContent>
     </Actionsheet>
   );

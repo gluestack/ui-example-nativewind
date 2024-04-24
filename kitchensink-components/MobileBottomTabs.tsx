@@ -9,9 +9,7 @@ const MobileBottomTabs = ({ bottomTabs, activeTab, setActiveTab }: any) => {
 
   return (
     <>
-      <HStack
-        className='content-center absolute bottom-0 justify-between w-full py-3 px-6 md:hidden'
-      >
+      <HStack className="content-center absolute bottom-0 justify-between w-full py-3 px-6 md:hidden">
         {bottomTabs.map((tab: any) => {
           return (
             <Pressable
@@ -33,13 +31,21 @@ const MobileBottomTabs = ({ bottomTabs, activeTab, setActiveTab }: any) => {
               <VStack className="items-center">
                 <Icon
                   as={tab.icon}
-                  className={`${activeTab === tab.label ? "text-primary-500" : "text-typography-400"}`}
+                  className={`${
+                    activeTab === tab.label
+                      ? "text-primary-500"
+                      : "text-typography-400"
+                  }`}
                   color={activeTab === tab.label ? "#F43F5E" : "#A3A3A3"}
                   size={20}
                 />
                 <Text
                   size="xs"
-                  className={`${activeTab === tab.label ? "text-typography-900" : "text-typography-400"}`}
+                  className={`${
+                    activeTab === tab.label
+                      ? "text-typography-900"
+                      : "text-typography-400"
+                  }`}
                 >
                   {tab.label}
                 </Text>
@@ -54,12 +60,10 @@ const MobileBottomTabs = ({ bottomTabs, activeTab, setActiveTab }: any) => {
           setModalVisible={setModalVisible}
         />
       )}
-      {actionsheetVisible && (
-        <MobileSidebarActionsheet
-          actionsheetVisible={actionsheetVisible}
-          setActionsheetVisible={setActionsheetVisible}
-        />
-      )}
+      <MobileSidebarActionsheet
+        actionsheetVisible={actionsheetVisible}
+        setActionsheetVisible={setActionsheetVisible}
+      />
     </>
   );
 };
