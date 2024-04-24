@@ -1,8 +1,10 @@
 import "./global.css";
 import React from "react";
-import { SafeAreaView } from "react-native";
-import { GluestackUIProvider as NativewindProvider } from "./components/ui/gluestack-ui-provider";
 import HomestayPage from "./kitchensink-components/HomestayPage";
+import {
+  SafeAreaView,
+  GluestackUIProvider as NativewindProvider,
+} from "./components/ui";
 // import { useFonts } from "expo-font";
 // import {
 //   Inter_400Regular,
@@ -48,18 +50,18 @@ export default function App() {
       <SafeAreaView
         className={`${colorMode === "light" ? "bg-[#E5E5E5]" : "bg-[#262626]"}`}
       />
-      {/* bottom SafeAreaView */}
-      <SafeAreaView
-        className={`${
-          colorMode === "light" ? "bg-white" : "bg-[#171717]"
-        } flex-1 overflow-hidden`}
-      >
-        <ThemeContext.Provider value={{ colorMode, toggleColorMode }}>
-          <NativewindProvider mode={colorMode}>
+      <ThemeContext.Provider value={{ colorMode, toggleColorMode }}>
+        <NativewindProvider mode={colorMode}>
+          {/* bottom SafeAreaView */}
+          <SafeAreaView
+            className={`${
+              colorMode === "light" ? "bg-white" : "bg-[#171717]"
+            } flex-1 overflow-hidden`}
+          >
             <HomestayPage />
-          </NativewindProvider>
-        </ThemeContext.Provider>
-      </SafeAreaView>
+          </SafeAreaView>
+        </NativewindProvider>
+      </ThemeContext.Provider>
     </>
   );
 }
