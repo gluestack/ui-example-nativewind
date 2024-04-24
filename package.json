@@ -46,6 +46,7 @@
     "@legendapp/motion": "latest",
     "expo": "~50.0.14",
     "expo-status-bar": "~1.11.1",
+    "expo-updates": "~0.24.12",
     "lucide-react-native": "^0.368.0",
     "nativewind": "4.0.36",
     "react": "latest",
@@ -54,9 +55,9 @@
     "react-native-reanimated": "^3.8.1",
     "react-native-svg": "^15.1.0",
     "react-native-web": "~0.19.6",
-    "tailwindcss": "^3.4.3",
-    "expo-updates": "~0.24.12",
-    "serve": "latest"
+    "serve": "latest",
+    "server": "^1.0.39",
+    "tailwindcss": "^3.4.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
