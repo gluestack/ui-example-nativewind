@@ -56,7 +56,6 @@
     "react-native-svg": "^15.1.0",
     "react-native-web": "~0.19.6",
     "serve": "^14.2.2",
-    "server": "^1.0.39",
     "tailwindcss": "^3.4.3"
   },
   "devDependencies": {
