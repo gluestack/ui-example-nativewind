@@ -54,12 +54,12 @@ const MobileBottomTabs = ({ bottomTabs, activeTab, setActiveTab }: any) => {
           );
         })}
       </HStack>
-      {modalVisible && (
-        <ListYourPlaceModal
-          modalVisible={modalVisible}
-          setModalVisible={setModalVisible}
-        />
-      )}
+
+      <ListYourPlaceModal
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+      />
+      
       <MobileSidebarActionsheet
         actionsheetVisible={actionsheetVisible}
         setActionsheetVisible={setActionsheetVisible}
