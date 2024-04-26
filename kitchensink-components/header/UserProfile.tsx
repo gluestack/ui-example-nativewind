@@ -64,7 +64,7 @@ const UserProfile = () => {
                     uri: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
                   }}
                 />
-                <AvatarBadge className="bg-primary-500 border-background-100" />
+                <AvatarBadge className="bg-primary-500 border-background-0" />
               </Avatar>
             </Pressable>
           );

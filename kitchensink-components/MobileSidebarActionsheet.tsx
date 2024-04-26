@@ -19,7 +19,7 @@ const MobileSidebarActionsheet = ({
   return (
     <Actionsheet isOpen={actionsheetVisible} onClose={handleClose}>
       <ActionsheetBackdrop />
-      <ActionsheetContent className="h-[80vh] w-full">
+      <ActionsheetContent className="h-[75vh] w-full">
         <ActionsheetDragIndicatorWrapper>
           <ActionsheetDragIndicator />
         </ActionsheetDragIndicatorWrapper>

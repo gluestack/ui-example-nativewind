@@ -139,10 +139,10 @@ const TabPanelData = () => {
               {(props: any) => {
                 return (
                   <>
-                    <Box className="overflow-hidden rounded-md">
+                    <Box className="overflow-hidden rounded-md h-72">
                       <Image
                         source={image.src}
-                        className={`w-full h-64 ${
+                        className={`w-full h-72 ${
                           props.hovered
                             ? "scale-[1.04] opacity-90"
                             : "scale-100 opacity-100"
@@ -243,7 +243,7 @@ const TabPanelData = () => {
                       <HStack className="items-center flex-start">
                         <Icon
                           as={StarIcon}
-                          size="xs"
+                          size="2xs"
                           fill={colorMode === "light" ? "#272625" : "#F6F6F6"}
                           color={colorMode === "light" ? "#272625" : "#F6F6F6"}
                         />
