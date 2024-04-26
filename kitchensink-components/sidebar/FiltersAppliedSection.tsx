@@ -25,7 +25,7 @@ const FiltersAppliedSection = () => {
         </Text>
         <Button
           variant="link"
-          size="sm"
+          size="xs"
           onPress={() => {
             setAppliedFilters([]);
           }}

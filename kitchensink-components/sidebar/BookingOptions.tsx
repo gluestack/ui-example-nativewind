@@ -39,7 +39,7 @@ const BookingOptions = () => {
               Meals included
             </Text>
             <Text size="xs" className="text-typography-500">
-              Have a prefered meal for your comfy stay
+              Have a preferred meal for your comfy stay
             </Text>
           </VStack>
           <Switch

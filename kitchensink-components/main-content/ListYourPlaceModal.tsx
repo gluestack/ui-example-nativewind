@@ -110,6 +110,7 @@ const handleClose = (setModalVisible: any) => {
 };
 
 const ListYourPlaceModal = ({ modalVisible, setModalVisible }: any) => {
+  const { colorMode } = useContext(ThemeContext);
   const [modalFormStep, setModalFormStep] = React.useState(0);
 
   useEffect(() => {
@@ -169,7 +170,11 @@ const ListYourPlaceModal = ({ modalVisible, setModalVisible }: any) => {
               </Heading>
             </HStack>
             <ModalCloseButton>
-              <Icon as={CloseIcon} className="w-4 h-4" />
+              <Icon
+                as={CloseIcon}
+                className="w-4 h-4"
+                color={colorMode === "light" ? "#404040" : "#A3A3A3"}
+              />
             </ModalCloseButton>
           </ModalHeader>
           <ModalBody>
@@ -324,7 +329,7 @@ const ModalContent1 = ({ setModalFormStep, toast }: any) => {
                   item === selectedSellOrRentOption ? "primary" : "secondary"
                 }
                 variant="outline"
-                size="sm"
+                size="xs"
                 onPress={() => {
                   setSelectedSellOrRentOption(item);
                 }}
@@ -380,7 +385,7 @@ const ModalContent1 = ({ setModalFormStep, toast }: any) => {
                   : "secondary"
               }
               variant="outline"
-              size="sm"
+              size="xs"
               onPress={() => {
                 handlePropertyTypeSelection(item);
               }}
@@ -463,10 +468,7 @@ const ModalContent3 = ({ setModalVisible, toast }: any) => {
 
             {/* input: example */}
             <Input className="flex-1">
-              <InputField
-                keyboardType="numeric"
-                placeholder="Phone number"
-              />
+              <InputField keyboardType="numeric" placeholder="Phone number" />
             </Input>
           </HStack>
         </FormControl>
