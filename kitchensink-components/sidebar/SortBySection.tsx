@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   CircleIcon,
   Heading,
@@ -9,6 +9,7 @@ import {
   VStack,
   RadioIcon,
 } from "../../components/ui";
+import { ThemeContext } from "@/App";
 
 const SortBySection = () => {
   const sidebarFiltersCustomerRatings = [
@@ -29,6 +30,7 @@ const SortBySection = () => {
       value: "What’s new",
     },
   ];
+  const { colorMode } = useContext(ThemeContext);
   const [values, setValues] = React.useState("Top ratings");
 
   return (
@@ -45,10 +47,13 @@ const SortBySection = () => {
               value={placeType.value}
               size="sm"
               key={placeType.value}
-              className='justify-start my-2'
+              className="justify-start my-2"
             >
               <RadioIndicator>
-                <RadioIcon as={CircleIcon} color='#E11d48' />
+                <RadioIcon
+                  as={CircleIcon}
+                  color={colorMode === "light" ? "#292929" : "#FAFAFA"}
+                />
               </RadioIndicator>
               <RadioLabel>{placeType.label}</RadioLabel>
             </Radio>

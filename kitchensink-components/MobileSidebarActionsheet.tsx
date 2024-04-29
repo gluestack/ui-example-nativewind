@@ -3,7 +3,6 @@ import {
   Actionsheet,
   ActionsheetDragIndicatorWrapper,
   ActionsheetDragIndicator,
-  ActionsheetScrollView,
   ActionsheetBackdrop,
   ActionsheetContent,
 } from "../components/ui";
@@ -23,9 +22,7 @@ const MobileSidebarActionsheet = ({
         <ActionsheetDragIndicatorWrapper>
           <ActionsheetDragIndicator />
         </ActionsheetDragIndicatorWrapper>
-        {/* <ActionsheetScrollView> */}
         <Sidebar />
-        {/* </ActionsheetScrollView> */}
       </ActionsheetContent>
     </Actionsheet>
   );

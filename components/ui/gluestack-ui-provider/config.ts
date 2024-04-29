@@ -4,18 +4,18 @@ import { vars } from "nativewind";
 export const config = {
   light: vars({
     /* Primary  */
-    "--color-primary-0": "#ffffff",
-    "--color-primary-50": "#FFF1F2",
-    "--color-primary-100": "#FFE4E6",
-    "--color-primary-200": "#FECDD3",
-    "--color-primary-300": "#FDA4AF",
-    "--color-primary-400": "#EE596F",
-    "--color-primary-500": "#F43F5E",
-    "--color-primary-600": "#E11d48",
-    "--color-primary-700": "#BE123C",
-    "--color-primary-800": "#9F1239",
-    "--color-primary-900": "#881337",
-    "--color-primary-950": "#440A1C",
+    "--color-primary-0": "#B3B3B3",
+    "--color-primary-50": "#999999",
+    "--color-primary-100": "#808080",
+    "--color-primary-200": "#737373",
+    "--color-primary-300": "#666666",
+    "--color-primary-400": "#525252",
+    "--color-primary-500": "#333333",
+    "--color-primary-600": "#292929",
+    "--color-primary-700": "#1F1F1F",
+    "--color-primary-800": "#0D0D0D",
+    "--color-primary-900": "#0A0A0A",
+    "--color-primary-950": "#080808",
 
     /* Secondary  */
     "--color-secondary-0": "#FEFFFF",
@@ -147,7 +147,6 @@ export const config = {
     "--color-background-warning": "#FFF4EB",
     "--color-background-success": "#EDFCF2",
     "--color-background-muted": "#F6F6F7",
-    "--color-background-dark": "#171717",
     "--color-background-info": "#EBF8FE",
 
     /* Boundary for border color */
@@ -161,18 +160,18 @@ export const config = {
     "--color-shade-0": "#262626",
   }),
   dark: vars({
-    "--color-primary-0": "#ffffff",
-    "--color-primary-50": "#FFF1F2",
-    "--color-primary-100": "#FFE4E6",
-    "--color-primary-200": "#FECDD3",
-    "--color-primary-300": "#FDA4AF",
-    "--color-primary-400": "#EE596F",
-    "--color-primary-500": "#F43F5E",
-    "--color-primary-600": "#EE596F",
-    "--color-primary-700": "#BE123C",
-    "--color-primary-800": "#9F1239",
-    "--color-primary-900": "#881337",
-    "--color-primary-950": "#440A1C",
+    "--color-primary-0": "#828282",
+    "--color-primary-50": "#949494",
+    "--color-primary-100": "#9E9E9E",
+    "--color-primary-200": "#B3B3B3",
+    "--color-primary-300": "#C7C7C7",
+    "--color-primary-400": "#E6E6E6",
+    "--color-primary-500": "#F0F0F0",
+    "--color-primary-600": "#FAFAFA",
+    "--color-primary-700": "#FCFCFC",
+    "--color-primary-800": "#FDFDFD",
+    "--color-primary-900": "#FDFCFC",
+    "--color-primary-950": "#FDFCFC",
 
     /* Secondary  */
     "--color-secondary-0": "#0B0C0C",
@@ -305,7 +304,6 @@ export const config = {
     "--color-background-warning": "#412F23",
     "--color-background-success": "#1C2B21",
     "--color-background-muted": "#252526",
-    "--color-background-dark": "#171717",
     "--color-background-info": "#1A282E",
 
     /* Boundary for border color */

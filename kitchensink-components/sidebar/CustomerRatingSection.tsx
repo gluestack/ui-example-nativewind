@@ -53,7 +53,10 @@ const CustomerRatingSection = () => {
               className="my-2"
             >
               <CheckboxIndicator>
-                <CheckboxIcon as={CheckIcon} color="white" />
+                <CheckboxIcon
+                  as={CheckIcon}
+                  color={colorMode === "light" ? "#FEFEFF" : "#171717"}
+                />
               </CheckboxIndicator>
               <CheckboxLabel className="flex flex-row items-center gap-1">
                 <Icon
