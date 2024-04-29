@@ -36,7 +36,6 @@ const MobileBottomTabs = ({ bottomTabs, activeTab, setActiveTab }: any) => {
                       ? "text-primary-500"
                       : "text-typography-400"
                   }`}
-                  color={activeTab === tab.label ? "#F43F5E" : "#A3A3A3"}
                   size={20}
                 />
                 <Text
@@ -59,7 +58,7 @@ const MobileBottomTabs = ({ bottomTabs, activeTab, setActiveTab }: any) => {
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
       />
-      
+
       <MobileSidebarActionsheet
         actionsheetVisible={actionsheetVisible}
         setActionsheetVisible={setActionsheetVisible}

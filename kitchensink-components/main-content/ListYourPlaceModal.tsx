@@ -263,7 +263,7 @@ const NextStepperButton = ({ setModalFormStep, step }: any) => {
         setModalFormStep(step);
       }}
     >
-      <ButtonText className="text-white group-hover/button:text-white">
+      <ButtonText className="text-typography-0 group-hover/button:text-typography-0">
         Next
       </ButtonText>
     </Button>
@@ -289,7 +289,7 @@ const PostNowButton = ({ setModalVisible, toast }: any) => {
         });
       }}
     >
-      <ButtonText className="text-white group-hover/button:text-white">
+      <ButtonText className="text-typography-0 group-hover/button:text-typography-0">
         Post Now
       </ButtonText>
     </Button>
@@ -355,19 +355,13 @@ const ModalContent1 = ({ setModalFormStep, toast }: any) => {
               <HStack space="md">
                 <Radio value="Residential">
                   <RadioIndicator>
-                    <RadioIcon
-                      as={CircleIcon}
-                      color={colorMode === "light" ? "#E11d48" : "#EE596F"}
-                    />
+                    <RadioIcon as={CircleIcon} className="text-primary-600" />
                   </RadioIndicator>
                   <RadioLabel>Residential</RadioLabel>
                 </Radio>
                 <Radio value="Commercial">
                   <RadioIndicator>
-                    <RadioIcon
-                      as={CircleIcon}
-                      color={colorMode === "light" ? "#E11d48" : "#EE596F"}
-                    />
+                    <RadioIcon as={CircleIcon} className="text-primary-600" />
                   </RadioIndicator>
                   <RadioLabel>Commercial</RadioLabel>
                 </Radio>
@@ -482,6 +476,7 @@ const ModalContent3 = ({ setModalVisible, toast }: any) => {
 };
 
 const AmenitiesSection = () => {
+  const { colorMode } = useContext(ThemeContext);
   const [values, setValues] = React.useState(["wifi", "air-conditioning"]);
   return (
     <VStack space="sm">
@@ -503,7 +498,10 @@ const AmenitiesSection = () => {
                 accessibilityLabel={ammenity.value}
               >
                 <CheckboxIndicator>
-                  <CheckboxIcon as={CheckIcon} color="white" />
+                  <CheckboxIcon
+                    as={CheckIcon}
+                    color={colorMode === "light" ? "#FEFEFF" : "#171717"}
+                  />
                 </CheckboxIndicator>
                 <CheckboxLabel>{ammenity.label}</CheckboxLabel>
               </Checkbox>

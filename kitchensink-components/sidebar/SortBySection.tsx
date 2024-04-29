@@ -48,7 +48,7 @@ const SortBySection = () => {
               className='justify-start my-2'
             >
               <RadioIndicator>
-                <RadioIcon as={CircleIcon} />
+                <RadioIcon as={CircleIcon} className='text-primary-600' />
               </RadioIndicator>
               <RadioLabel>{placeType.label}</RadioLabel>
             </Radio>

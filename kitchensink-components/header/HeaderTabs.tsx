@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { HStack, Icon, Pressable, Text, SearchIcon } from "../../components/ui";
+import { ThemeContext } from "@/App";
 
 const HeaderTabs = () => {
+  const { colorMode } = useContext(ThemeContext);
   const [selectedTab, setSelectedTab] = React.useState("Anywhere");
   return (
     <HStack className="h-20 items-center justify-between">
@@ -39,7 +41,11 @@ const HeaderTabs = () => {
           </Text>
         </Pressable>
         <Pressable className="ml-3 p-2 bg-primary-500 rounded-full">
-          <Icon as={SearchIcon} className="w-4 h-4 text-white" />
+          <Icon
+            as={SearchIcon}
+            className="w-4 h-4"
+            color={colorMode === "light" ? "#FEFEFF" : "#171717"}
+          />
         </Pressable>
       </HStack>
     </HStack>
