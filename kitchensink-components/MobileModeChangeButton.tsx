@@ -7,11 +7,12 @@ const MobileModeChangeButton = () => {
   const { colorMode, toggleColorMode } = useContext(ThemeContext);
   return (
     <>
-      <Fab
-        onPress={toggleColorMode}
-        className='md:hidden bottom-4 right-4'
-      >
-        <FabIcon as={colorMode === "light" ? Moon : Sun} fill="white" color='white'  />
+      <Fab onPress={toggleColorMode} className="md:hidden bottom-4 right-4">
+        <FabIcon
+          as={colorMode === "light" ? Moon : Sun}
+          fill={colorMode === "light" ? "#FEFEFF" : "#171717"}
+          color={colorMode === "light" ? "#FEFEFF" : "#171717"}
+        />
       </Fab>
     </>
   );

@@ -52,7 +52,6 @@ import {
   SelectPortal,
   SelectItem,
 } from "../../components/ui";
-import colors from "tailwindcss/colors";
 import { ThemeContext } from "../../App";
 
 const sidebarFiltersAmmenities = [
@@ -114,8 +113,10 @@ const ListYourPlaceModal = ({ modalVisible, setModalVisible }: any) => {
   const [modalFormStep, setModalFormStep] = React.useState(0);
 
   useEffect(() => {
-    setModalFormStep(0);
-  }, []);
+    if(modalVisible === true) {
+      setModalFormStep(0);
+    }
+  }, [modalVisible]);
 
   const toast = useToast();
   const getModalStepContent = (step: number) => {
@@ -187,6 +188,7 @@ const ListYourPlaceModal = ({ modalVisible, setModalVisible }: any) => {
 };
 
 const SaveForLaterButton = ({ setModalVisible, toast }: any) => {
+  const { colorMode } = useContext(ThemeContext);
   const [showSpinner, setShowSpinner] = useState(false);
 
   const handleSaveForLater = () => {
@@ -209,7 +211,10 @@ const SaveForLaterButton = ({ setModalVisible, toast }: any) => {
     <Box className="h-12 w-full">
       {showSpinner ? (
         <Center>
-          <Spinner size="large" color={colors.primary[500]} />
+          <Spinner
+            size="large"
+            color={colorMode === "light" ? "#333333" : "#F0F0F0"}
+          />
         </Center>
       ) : (
         <Button
@@ -246,7 +251,7 @@ const PreviousStepperButton = ({ setModalFormStep, step }: any) => {
 
 const RenderToast = ({ description, title, id }: any) => {
   return (
-    <Toast action="success" id={id} top={150}>
+    <Toast action="success" id={id} className="top-[150px]">
       <HStack space="xs" className="items-center">
         <Icon as={CheckCircleIcon} />
         <ToastTitle>{title}</ToastTitle>
@@ -263,7 +268,7 @@ const NextStepperButton = ({ setModalFormStep, step }: any) => {
         setModalFormStep(step);
       }}
     >
-      <ButtonText className="text-white group-hover/button:text-white">
+      <ButtonText className="text-typography-0 group-hover/button:text-typography-0">
         Next
       </ButtonText>
     </Button>
@@ -289,7 +294,7 @@ const PostNowButton = ({ setModalVisible, toast }: any) => {
         });
       }}
     >
-      <ButtonText className="text-white group-hover/button:text-white">
+      <ButtonText className="text-typography-0 group-hover/button:text-typography-0">
         Post Now
       </ButtonText>
     </Button>
@@ -357,7 +362,7 @@ const ModalContent1 = ({ setModalFormStep, toast }: any) => {
                   <RadioIndicator>
                     <RadioIcon
                       as={CircleIcon}
-                      color={colorMode === "light" ? "#E11d48" : "#EE596F"}
+                      color={colorMode === "light" ? "#292929" : "#FAFAFA"}
                     />
                   </RadioIndicator>
                   <RadioLabel>Residential</RadioLabel>
@@ -366,7 +371,7 @@ const ModalContent1 = ({ setModalFormStep, toast }: any) => {
                   <RadioIndicator>
                     <RadioIcon
                       as={CircleIcon}
-                      color={colorMode === "light" ? "#E11d48" : "#EE596F"}
+                      color={colorMode === "light" ? "#292929" : "#FAFAFA"}
                     />
                   </RadioIndicator>
                   <RadioLabel>Commercial</RadioLabel>
@@ -482,6 +487,7 @@ const ModalContent3 = ({ setModalVisible, toast }: any) => {
 };
 
 const AmenitiesSection = () => {
+  const { colorMode } = useContext(ThemeContext);
   const [values, setValues] = React.useState(["wifi", "air-conditioning"]);
   return (
     <VStack space="sm">
@@ -503,7 +509,10 @@ const AmenitiesSection = () => {
                 accessibilityLabel={ammenity.value}
               >
                 <CheckboxIndicator>
-                  <CheckboxIcon as={CheckIcon} color="white" />
+                  <CheckboxIcon
+                    as={CheckIcon}
+                    color={colorMode === "light" ? "#FEFEFF" : "#171717"}
+                  />
                 </CheckboxIndicator>
                 <CheckboxLabel>{ammenity.label}</CheckboxLabel>
               </Checkbox>

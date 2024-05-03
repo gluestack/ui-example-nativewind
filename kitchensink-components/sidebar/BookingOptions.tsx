@@ -24,7 +24,7 @@ const BookingOptions = () => {
             size="sm"
             value={selfCheckIn}
             onValueChange={(val: any) => setSelfCheckIn(val)}
-            trackColor={{ false: colors.gray[300], true: '#e11d48' }}
+            trackColor={{ false: colors.gray[300], true: colors.gray[500] }}
             thumbColor={colors.gray[50]}
             activeThumbColor={colors.gray[50]}
             ios_backgroundColor={colors.gray[300]}
@@ -46,7 +46,7 @@ const BookingOptions = () => {
             size="sm"
             value={mealsIncluded}
             onValueChange={(val: any) => setMealsIncluded(val)}
-            trackColor={{ false: colors.gray[300], true: '#e11d48' }}
+            trackColor={{ false: colors.gray[300], true: colors.gray[500] }}
             thumbColor={colors.gray[50]}
             activeThumbColor={colors.gray[50]}
             ios_backgroundColor={colors.gray[300]}

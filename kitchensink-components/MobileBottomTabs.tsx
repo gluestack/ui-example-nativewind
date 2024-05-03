@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { HStack, Icon, Pressable, Text, VStack } from "../components/ui";
 import ListYourPlaceModal from "./main-content/ListYourPlaceModal";
 import MobileSidebarActionsheet from "./MobileSidebarActionsheet";
+import { ThemeContext } from "@/App";
 
 const MobileBottomTabs = ({ bottomTabs, activeTab, setActiveTab }: any) => {
+  const { colorMode } = useContext(ThemeContext);
   const [modalVisible, setModalVisible] = React.useState(false);
   const [actionsheetVisible, setActionsheetVisible] = React.useState(false);
+  const iconColor = (tab: any) => {
+    const lightMode = activeTab === tab.label ? "#333333" : "#A3A3A3";
+    const darkMode = activeTab === tab.label ? "#F0F0F0" : "#8C8C8C";
+    return colorMode === "light" ? lightMode : darkMode;
+  };
 
   return (
     <>
@@ -29,16 +36,7 @@ const MobileBottomTabs = ({ bottomTabs, activeTab, setActiveTab }: any) => {
               opacity={tab.disabled ? 0.5 : 1}
             >
               <VStack className="items-center">
-                <Icon
-                  as={tab.icon}
-                  className={`${
-                    activeTab === tab.label
-                      ? "text-primary-500"
-                      : "text-typography-400"
-                  }`}
-                  color={activeTab === tab.label ? "#F43F5E" : "#A3A3A3"}
-                  size={20}
-                />
+                <Icon as={tab.icon} color={iconColor(tab)} size={20} />
                 <Text
                   size="xs"
                   className={`${
@@ -59,7 +57,7 @@ const MobileBottomTabs = ({ bottomTabs, activeTab, setActiveTab }: any) => {
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
       />
-      
+
       <MobileSidebarActionsheet
         actionsheetVisible={actionsheetVisible}
         setActionsheetVisible={setActionsheetVisible}
