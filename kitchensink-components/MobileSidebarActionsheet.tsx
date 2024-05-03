@@ -23,7 +23,7 @@ const MobileSidebarActionsheet = ({
       // height is not calculated correctly
     >
       <ActionsheetBackdrop />
-      <ActionsheetContent className="ios:h-[75vh] w-full">  
+      <ActionsheetContent className="ios:h-[75vh] web:h-[75vh] w-full">  
       {/* we have to remove the height from ios: known issue */}
         <ActionsheetDragIndicatorWrapper>
           <ActionsheetDragIndicator />
