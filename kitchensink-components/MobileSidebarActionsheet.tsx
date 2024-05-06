@@ -22,7 +22,7 @@ const MobileSidebarActionsheet = ({
       snapPoints={[80]}  
     >
       <ActionsheetBackdrop />
-      <ActionsheetContent className="w-full ios:pb-[72px] android:pb-10">  
+      <ActionsheetContent className="w-full ios:pb-20 android:pb-10">  
         <ActionsheetDragIndicatorWrapper>
           <ActionsheetDragIndicator />
         </ActionsheetDragIndicatorWrapper>
