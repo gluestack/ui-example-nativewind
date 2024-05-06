@@ -20,11 +20,9 @@ const MobileSidebarActionsheet = ({
       isOpen={actionsheetVisible}
       onClose={handleClose}
       snapPoints={[80]}  
-      // height is not calculated correctly
     >
       <ActionsheetBackdrop />
-      <ActionsheetContent className="ios:h-[75vh] web:h-[75vh] w-full">  
-      {/* we have to remove the height from ios: known issue */}
+      <ActionsheetContent className="w-full ios:pb-20 android:pb-10">  
         <ActionsheetDragIndicatorWrapper>
           <ActionsheetDragIndicator />
         </ActionsheetDragIndicatorWrapper>
