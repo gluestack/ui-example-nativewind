@@ -394,7 +394,7 @@ const ModalContent1 = ({ setModalFormStep, toast }: any) => {
               onPress={() => {
                 handlePropertyTypeSelection(item);
               }}
-              className="rounded-full mb-2"
+              className="rounded-full mb-2 hover:bg-background-200"
             >
               <ButtonText>{item}</ButtonText>
             </Button>
