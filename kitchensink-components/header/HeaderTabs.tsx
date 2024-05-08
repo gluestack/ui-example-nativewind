@@ -5,7 +5,7 @@ const HeaderTabs = () => {
   const [selectedTab, setSelectedTab] = React.useState("Anywhere");
   return (
     <HStack className="h-20 items-center justify-between">
-      <HStack className="rounded-full p-1.5 items-center border border-boundary-0">
+      <HStack className="rounded-full p-1.5 items-center border border-outline-200">
         <Pressable
           className={`rounded-full px-3 py-1.5 ${
             selectedTab === "Anywhere" ? "bg-background-100" : "bg-transparent"

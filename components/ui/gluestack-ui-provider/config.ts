@@ -149,11 +149,7 @@ export const config = {
     "--color-background-muted": "#F6F6F7",
     "--color-background-info": "#EBF8FE",
 
-    /* Boundary for border color */
-    "--color-boundary-0": "#DBDBDB",
-
     /* Content for text color */
-    "--color-content-0": "#FCFCFC",
     "--color-content-50": "#FCFCFC",
 
     /* Shade for background color */
@@ -306,11 +302,7 @@ export const config = {
     "--color-background-muted": "#252526",
     "--color-background-info": "#1A282E",
 
-    /* Boundary for border color */
-    "--color-boundary-0": "#262626",
-
     /* Content for text color */
-    "--color-content-0": "#FCFCFC",
     "--color-content-50": "#DBDBDB",
 
     /* Shade for background color */

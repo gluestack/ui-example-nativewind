@@ -157,11 +157,8 @@ module.exports = {
           info: 'var(--color-background-info)',
           dark: '#171717',
         },
-        boundary: {
-          0: 'var(--color-boundary-0)',
-        },
         content: {
-          0: 'var(--color-content-0)',
+          0: '#FCFCFC',
           50: 'var(--color-content-50)',
         },
         shade: {
