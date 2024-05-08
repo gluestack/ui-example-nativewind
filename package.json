@@ -30,7 +30,7 @@
     "@gluestack-ui/link": "latest",
     "@gluestack-ui/menu": "latest",
     "@gluestack-ui/modal": "latest",
-    "@gluestack-ui/nativewind-utils": "latest",
+    "@gluestack-ui/nativewind-utils": "^1.0.13",
     "@gluestack-ui/overlay": "latest",
     "@gluestack-ui/popover": "latest",
     "@gluestack-ui/pressable": "latest",

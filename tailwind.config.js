@@ -1,3 +1,4 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class',
   content: [
@@ -5,10 +6,20 @@ module.exports = {
     './components/ui/**/*.{html,js,jsx,ts,tsx}',
     './App.{html,js,jsx,ts,tsx}',
   ],
-  presets: [require('nativewind/preset')],
   safelist: [
-    'border-primary-600', 'border-primary-800', 'border-primary-700'
+    'gap-x-2',
+    'gap-y-6',
+    'pl-4',
+    'flex-wrap',
+    'mb-12',
+    'basis-[10%]',
+    'border-primary-600', 'border-primary-800', 'border-primary-700',
+    {
+      pattern:
+        /bg-(primary|secondary|tertiary|error|success|warning|muted|info|typography|outline|background)-(0|50|100|200|300|400|500|600|700|800|900|950|light|dark|white|gray|black)/,
+    },
   ],
+  presets: [require('nativewind/preset')],
   theme: {
     extend: {
       colors: {
@@ -122,6 +133,9 @@ module.exports = {
           800: 'var(--color-typography-800)',
           900: 'var(--color-typography-900)',
           950: 'var(--color-typography-950)',
+          white: '#FFFFFF',
+          gray: '#D4D4D4',
+          black: '#181718',
         },
         outline: {
           0: 'var(--color-outline-0)',
@@ -155,7 +169,8 @@ module.exports = {
           muted: 'var(--color-background-muted)',
           success: 'var(--color-background-success)',
           info: 'var(--color-background-info)',
-          dark: '#171717',
+          light: '#FBFBFB',
+          dark: '#181719',
         },
         boundary: {
           0: 'var(--color-boundary-0)',
@@ -168,7 +183,7 @@ module.exports = {
           0: 'var(--color-shade-0)',
         },
       },
-     fontFamily: {
+      fontFamily: {
         heading: undefined,
         body: undefined,
         mono: undefined,
