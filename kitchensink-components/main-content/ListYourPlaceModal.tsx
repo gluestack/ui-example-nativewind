@@ -208,7 +208,7 @@ const SaveForLaterButton = ({ setModalVisible, toast }: any) => {
   };
 
   return (
-    <Box className="h-12 w-full">
+    <Box className="w-full">
       {showSpinner ? (
         <Center>
           <Spinner

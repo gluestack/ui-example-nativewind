@@ -9,7 +9,8 @@ import {
   VStack,
   Tooltip,
   TooltipContent,
-  TooltipText, StarIcon
+  TooltipText,
+  StarIcon,
 } from "../../components/ui";
 import { ChevronRight, Heart } from "lucide-react-native";
 import { AnimatePresence, Motion } from "@legendapp/motion";
@@ -23,6 +24,7 @@ const homestayInfoData = [
     location: "401 Platte River Rd, Gothenburg, United States",
     price: "$1,481",
     rating: 4.9,
+    tab: "tropical",
   },
   {
     title: "Spinner Resort",
@@ -30,6 +32,7 @@ const homestayInfoData = [
     location: "1502 Silica Ave, Sacramento California",
     price: "$1,381",
     rating: 4.89,
+    tab: "tropical",
   },
   {
     title: "DropDown Den",
@@ -37,6 +40,223 @@ const homestayInfoData = [
     location: "2945 Entry Point Blvd, Kissimmee, Florida",
     price: "$2,481",
     rating: 4.6,
+    tab: "tropical",
+  },
+  {
+    title: "ImageView Inn",
+    src: require("../../assets/display/image19.svg"),
+    location: "401 Platte River Rd, Gothenburg, United States",
+    price: "$1,481",
+    rating: 4.9,
+    tab: "amazing views",
+  },
+  {
+    title: "Spinner Resort",
+    src: require("../../assets/display/image20.svg"),
+    location: "1502 Silica Ave, Sacramento California",
+    price: "$1,381",
+    rating: 4.89,
+    tab: "amazing views",
+  },
+  {
+    title: "DropDown Den",
+    src: require("../../assets/display/image21.svg"),
+    location: "2945 Entry Point Blvd, Kissimmee, Florida",
+    price: "$2,481",
+    rating: 4.6,
+    tab: "amazing views",
+  },
+  {
+    title: "ImageView Inn",
+    src: require("../../assets/display/image22.svg"),
+    location: "401 Platte River Rd, Gothenburg, United States",
+    price: "$1,481",
+    rating: 4.9,
+    tab: "caves",
+  },
+  {
+    title: "Spinner Resort",
+    src: require("../../assets/display/image23.svg"),
+    location: "1502 Silica Ave, Sacramento California",
+    price: "$1,381",
+    rating: 4.89,
+    tab: "caves",
+  },
+  {
+    title: "DropDown Den",
+    src: require("../../assets/display/image24.svg"),
+    location: "2945 Entry Point Blvd, Kissimmee, Florida",
+    price: "$2,481",
+    rating: 4.6,
+    tab: "caves",
+  },
+  {
+    title: "ImageView Inn",
+    src: require("../../assets/display/image25.svg"),
+    location: "401 Platte River Rd, Gothenburg, United States",
+    price: "$1,481",
+    rating: 4.9,
+    tab: "mansions",
+  },
+  {
+    title: "Spinner Resort",
+    src: require("../../assets/display/image26.svg"),
+    location: "1502 Silica Ave, Sacramento California",
+    price: "$1,381",
+    rating: 4.89,
+    tab: "mansions",
+  },
+  {
+    title: "DropDown Den",
+    src: require("../../assets/display/image27.svg"),
+    location: "2945 Entry Point Blvd, Kissimmee, Florida",
+    price: "$2,481",
+    rating: 4.6,
+    tab: "mansions",
+  },
+  {
+    title: "ImageView Inn",
+    src: require("../../assets/display/image28.svg"),
+    location: "401 Platte River Rd, Gothenburg, United States",
+    price: "$1,481",
+    rating: 4.9,
+    tab: "amazing pools",
+  },
+  {
+    title: "Spinner Resort",
+    src: require("../../assets/display/image29.svg"),
+    location: "1502 Silica Ave, Sacramento California",
+    price: "$1,381",
+    rating: 4.89,
+    tab: "amazing pools",
+  },
+  {
+    title: "DropDown Den",
+    src: require("../../assets/display/image30.svg"),
+    location: "2945 Entry Point Blvd, Kissimmee, Florida",
+    price: "$2,481",
+    rating: 4.6,
+    tab: "amazing pools",
+  },
+  {
+    title: "ImageView Inn",
+    src: require("../../assets/display/image31.svg"),
+    location: "401 Platte River Rd, Gothenburg, United States",
+    price: "$1,481",
+    rating: 4.9,
+    tab: "cabins",
+  },
+  {
+    title: "Spinner Resort",
+    src: require("../../assets/display/image32.svg"),
+    location: "1502 Silica Ave, Sacramento California",
+    price: "$1,381",
+    rating: 4.89,
+    tab: "cabins",
+  },
+  {
+    title: "DropDown Den",
+    src: require("../../assets/display/image33.svg"),
+    location: "2945 Entry Point Blvd, Kissimmee, Florida",
+    price: "$2,481",
+    rating: 4.6,
+    tab: "cabins",
+  },
+  {
+    title: "ImageView Inn",
+    src: require("../../assets/display/image16.png"),
+    location: "401 Platte River Rd, Gothenburg, United States",
+    price: "$1,481",
+    rating: 4.9,
+    tab: "beachfront",
+  },
+  {
+    title: "Spinner Resort",
+    src: require("../../assets/display/image17.png"),
+    location: "1502 Silica Ave, Sacramento California",
+    price: "$1,381",
+    rating: 4.89,
+    tab: "beachfront",
+  },
+  {
+    title: "DropDown Den",
+    src: require("../../assets/display/image18.png"),
+    location: "2945 Entry Point Blvd, Kissimmee, Florida",
+    price: "$2,481",
+    rating: 4.6,
+    tab: "beachfront",
+  },
+  {
+    title: "ImageView Inn",
+    src: require("../../assets/display/image16.png"),
+    location: "401 Platte River Rd, Gothenburg, United States",
+    price: "$1,481",
+    rating: 4.9,
+    tab: "countryside",
+  },
+  {
+    title: "Spinner Resort",
+    src: require("../../assets/display/image17.png"),
+    location: "1502 Silica Ave, Sacramento California",
+    price: "$1,381",
+    rating: 4.89,
+    tab: "countryside",
+  },
+  {
+    title: "DropDown Den",
+    src: require("../../assets/display/image18.png"),
+    location: "2945 Entry Point Blvd, Kissimmee, Florida",
+    price: "$2,481",
+    rating: 4.6,
+    tab: "countryside",
+  },
+  {
+    title: "ImageView Inn",
+    src: require("../../assets/display/image16.png"),
+    location: "401 Platte River Rd, Gothenburg, United States",
+    price: "$1,481",
+    rating: 4.9,
+    tab: "tiny homes",
+  },
+  {
+    title: "Spinner Resort",
+    src: require("../../assets/display/image17.png"),
+    location: "1502 Silica Ave, Sacramento California",
+    price: "$1,381",
+    rating: 4.89,
+    tab: "tiny homes",
+  },
+  {
+    title: "DropDown Den",
+    src: require("../../assets/display/image18.png"),
+    location: "2945 Entry Point Blvd, Kissimmee, Florida",
+    price: "$2,481",
+    rating: 4.6,
+    tab: "tiny homes",
+  },
+  {
+    title: "ImageView Inn",
+    src: require("../../assets/display/image16.png"),
+    location: "401 Platte River Rd, Gothenburg, United States",
+    price: "$1,481",
+    rating: 4.9,
+    tab: "national parks",
+  },
+  {
+    title: "Spinner Resort",
+    src: require("../../assets/display/image17.png"),
+    location: "1502 Silica Ave, Sacramento California",
+    price: "$1,381",
+    rating: 4.89,
+    tab: "national parks",
+  },
+  {
+    title: "DropDown Den",
+    src: require("../../assets/display/image18.png"),
+    location: "2945 Entry Point Blvd, Kissimmee, Florida",
+    price: "$2,481",
+    rating: 4.6,
+    tab: "national parks",
   },
 ];
 
@@ -74,21 +294,25 @@ const tabsData = [
 ];
 
 const HomestayInformationFold = () => {
+  const [activeTab, setActiveTab] = React.useState(tabsData[0]);
   return (
     <Box className="pb-8 px-4 md:px-0">
-      <HomestayInfoTabs tabsData={tabsData} />
-      <TabPanelData />
+      <HomestayInfoTabs
+        tabsData={tabsData}
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+      />
+      <TabPanelData activeTab={activeTab} />
     </Box>
   );
 };
 
-const HomestayInfoTabs = ({ tabsData }: any) => {
-  const [activeTab, setActiveTab] = React.useState(tabsData[0]);
+const HomestayInfoTabs = ({ tabsData, activeTab, setActiveTab }: any) => {
   return (
     <Box className="border-b border-outline-50 md:border-b-0 md:border-transparent">
       <Box className="py-5">
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <HStack space="lg" className="mx-0.5">
+          <HStack space="lg" className="mx-0.5 xl:gap-5 2xl:gap-6">
             {tabsData.map((tab: any) => {
               return (
                 <Pressable
@@ -122,12 +346,17 @@ const HomestayInfoTabs = ({ tabsData }: any) => {
   );
 };
 
-const TabPanelData = () => {
+const TabPanelData = ({ activeTab }: any) => {
   const [likes, setLikes]: any = React.useState([]);
   const { colorMode } = useContext(ThemeContext);
+
+  const filteredData = homestayInfoData.filter(
+    (data) => data.tab.toLowerCase() === activeTab.title.toLowerCase()
+  );
+
   return (
     <VStack className="justify-between lg:flex-row">
-      {homestayInfoData.map((image: any, index: any) => {
+      {filteredData.map((image: any, index: any) => {
         return (
           <Box
             key={index}

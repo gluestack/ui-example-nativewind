@@ -1,6 +1,5 @@
 import React from "react";
-import { ScrollView } from "react-native";
-import { VStack } from "../components/ui";
+import { VStack, ScrollView } from "../components/ui";
 import AmenitiesSection from "./sidebar/AmenitiesSection";
 import BookingOptions from "./sidebar/BookingOptions";
 import CustomerRatingSection from "./sidebar/CustomerRatingSection";
