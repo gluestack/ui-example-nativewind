@@ -31,7 +31,7 @@ const Header = React.memo(() => {
       </Box>
       {/* small screen */}
       <Box className="p-5 md:hidden w-full">
-        <Input variant="rounded" size="sm" className="w-full">
+        <Input variant="rounded" size="sm" className="w-full h-10">
           <InputField placeholder="Anywhere • Any week • Add guests" />
           <InputSlot className="bg-primary-500 rounded-full h-6 w-6 m-1.5">
             <InputIcon

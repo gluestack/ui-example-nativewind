@@ -18,11 +18,11 @@ import {
 import {
   Blinds,
   ChevronRight,
-  Headphones,
-  HeartHandshake,
   Settings,
   Tablets,
   User,
+  MessageCircleQuestionIcon,
+  HeadsetIcon,
 } from "lucide-react-native";
 import { ScrollView } from "react-native";
 import LogoutAlertDialog from "./LogoutAlertDialog";
@@ -33,15 +33,15 @@ const MobileProfilePage = ({ isActive }: any) => {
   return (
     <ScrollView style={{ display: isActive ? "flex" : "none" }}>
       <VStack className="px-5 py-4 flex-1" space="lg">
-        <Heading>Profile</Heading>
+        <Heading className="mb-1">Profile</Heading>
         <ProfileCard />
-        <Divider />
+        <Divider className="my-2" />
         <PersonalInfoSection />
-        <Divider />
+        <Divider className="my-2" />
         <HostingSection />
-        <Divider />
+        <Divider className="my-2" />
         <SupportSection />
-        <Divider />
+        <Divider className="my-2" />
         <LogoutButton
           openLogoutAlertDialog={openLogoutAlertDialog}
           setOpenLogoutAlertDialog={setOpenLogoutAlertDialog}
@@ -57,9 +57,9 @@ const MobileProfilePage = ({ isActive }: any) => {
 
 const ProfileCard = () => {
   return (
-    <HStack className='justify-between items-center'>
+    <HStack className="justify-between items-center">
       <HStack space="md">
-        <Avatar className='bg-primary-500'>
+        <Avatar className="bg-primary-500">
           <AvatarFallbackText>Henry Stan</AvatarFallbackText>
           <AvatarImage
             source={{
@@ -70,7 +70,10 @@ const ProfileCard = () => {
         <VStack>
           <Text>Henry Stan</Text>
           <Link>
-            <LinkText size="sm" className="text-typography-500 no-underline hover:text-typography-500 active:text-typography-500">
+            <LinkText
+              size="sm"
+              className="text-typography-500 no-underline hover:text-typography-500 active:text-typography-500"
+            >
               Show Profile
             </LinkText>
           </Link>
@@ -85,7 +88,7 @@ const ProfileCard = () => {
 
 const PersonalInfoSection = () => {
   return (
-    <VStack space="md">
+    <VStack space="lg">
       <HStack className="justify-between">
         <HStack space="md">
           <Icon as={User} />
@@ -110,8 +113,8 @@ const PersonalInfoSection = () => {
 
 const HostingSection = () => {
   return (
-    <VStack space="md">
-      <Heading>Hosting</Heading>
+    <VStack space="lg">
+      <Heading className="mb-1">Hosting</Heading>
       <HStack className="justify-between">
         <HStack space="md">
           <Icon as={Blinds} />
@@ -136,11 +139,11 @@ const HostingSection = () => {
 
 const SupportSection = () => {
   return (
-    <VStack space="md">
-      <Heading>Support</Heading>
+    <VStack space="lg">
+      <Heading className="mb-1">Support</Heading>
       <HStack className="justify-between">
         <HStack space="md">
-          <Icon as={HeartHandshake} />
+          <Icon as={MessageCircleQuestionIcon} />
           <Text>Get Help</Text>
         </HStack>
         <Pressable>
@@ -149,7 +152,7 @@ const SupportSection = () => {
       </HStack>
       <HStack className="justify-between">
         <HStack space="md">
-          <Icon as={Headphones} />
+          <Icon as={HeadsetIcon} />
           <Text>Contact Support</Text>
         </HStack>
         <Pressable>
