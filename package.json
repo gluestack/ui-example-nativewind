@@ -44,7 +44,7 @@
     "@gluestack-ui/toast": "latest",
     "@gluestack-ui/tooltip": "latest",
     "@legendapp/motion": "latest",
-    "expo": "~50.0.14",
+    "expo": "^51.0.5",
     "expo-status-bar": "~1.11.1",
     "expo-updates": "~0.24.12",
     "lucide-react-native": "^0.368.0",

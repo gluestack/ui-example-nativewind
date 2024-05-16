@@ -15,15 +15,6 @@ body {
   @apply bg-transparent;
 }
 
-.gs-dark ::-webkit-scrollbar-thumb {
-  @apply bg-[#525252] rounded-[20px] border-[3px] border-solid border-transparent;
-}
-
 ::-webkit-scrollbar-thumb {
-  @apply bg-[#dbdbdb] rounded-[20px] border-[3px] border-solid border-transparent;
-}
-
-::-webkit-scrollbar-corner,
-::-webkit-scrollbar-track {
-  @apply bg-transparent;
+  @apply bg-secondary-200 rounded-[20px] border-[3px] border-solid border-transparent;
 }
