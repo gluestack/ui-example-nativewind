@@ -30,7 +30,7 @@ const MainContentHeader = ({ setActiveTab, activeTab }: any) => {
         >
           <ButtonIcon
             as={List}
-            color={colorMode === "light" ? "#515252" : "#B0B0B0"}
+            color={colorMode === "light" ? "#404040" : "#E5E5E5"}
           />
           <ButtonText className="pl-2 text-typography-800">
             List your place

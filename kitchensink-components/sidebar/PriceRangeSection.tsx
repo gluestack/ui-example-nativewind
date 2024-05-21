@@ -18,7 +18,7 @@ import {
 } from "../../components/ui";
 import { ThemeContext } from "@/App";
 
-const PriceRangeSection = () => {
+const PriceRangeSection = ({ setScrollEnabled }: { setScrollEnabled: any }) => {
   const { colorMode } = useContext(ThemeContext);
   const [sliderValue, setSliderValue] = React.useState(3500);
   const [values, setValues] = React.useState(["entirePlace"]);
@@ -57,6 +57,8 @@ const PriceRangeSection = () => {
           handleChange(value);
         }}
         className="w-full"
+        onTouchStart={() => setScrollEnabled(false)}
+        onTouchEnd={() => setScrollEnabled(true)}
       >
         <SliderTrack>
           <SliderFilledTrack />

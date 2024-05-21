@@ -8,8 +8,8 @@ const HomestayLogo = () => {
     <Image
       source={
         colorMode === "light"
-          ? "/assets/light-logo.svg"
-          : "/assets/dark-logo.svg"
+          ? require("../../assets/light-logo.svg")
+          : require("../../assets/dark-logo.svg")
       }
       alt="homestaylogo"
       className="h-[42px] w-[142px]"

@@ -9,15 +9,16 @@ import PriceRangeSection from "./sidebar/PriceRangeSection";
 import SortBySection from "./sidebar/SortBySection";
 
 const Sidebar = () => {
+  const [scrollEnabled, setScrollEnabled] = React.useState<boolean>(true);
   return (
-    <ScrollView className="w-full">
+    <ScrollView className="w-full" scrollEnabled={scrollEnabled}>
       <VStack space="xl" className="py-6 px-4">
         <FiltersAppliedSection />
         <VStack space="xl" className="px-2">
           <SortBySection />
           <PlaceTypeSection />
           <AmenitiesSection />
-          <PriceRangeSection />
+          <PriceRangeSection setScrollEnabled={setScrollEnabled} />
           <BookingOptions />
           <CustomerRatingSection />
         </VStack>
