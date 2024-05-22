@@ -5,6 +5,15 @@ import {
   SafeAreaView,
   GluestackUIProvider as NativewindProvider,
 } from "./components/ui";
+import * as Linking from "expo-linking";
+
+let defaultTheme: "dark" | "light" = "light";
+
+Linking.getInitialURL().then((url: any) => {
+  let { queryParams } = Linking.parse(url) as any;
+  defaultTheme = queryParams?.iframeMode ?? defaultTheme;
+});
+
 // import { useFonts } from "expo-font";
 // import {
 //   Inter_400Regular,
@@ -25,7 +34,9 @@ export const ThemeContext = React.createContext<ThemeContextType>({
 });
 
 export default function App() {
-  const [colorMode, setColorMode] = React.useState<"dark" | "light">("light");
+  const [colorMode, setColorMode] = React.useState<"dark" | "light">(
+    defaultTheme
+  );
 
   //TODO: This is breaking the production web app, need to fix this.
   // const [fontsLoaded] = useFonts({
