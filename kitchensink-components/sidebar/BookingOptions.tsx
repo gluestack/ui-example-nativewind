@@ -33,7 +33,7 @@ const BookingOptions = () => {
       </VStack>
 
       <VStack className="w-full">
-        <HStack space="lg" w="100%">
+        <HStack space="lg" className="w-full">
           <VStack className="flex-1">
             <Text size="sm" className="text-typography-900">
               Meals included

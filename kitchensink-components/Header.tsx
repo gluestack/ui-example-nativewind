@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import {
   Box,
   HStack,
@@ -12,10 +12,8 @@ import HeaderTabs from "./header/HeaderTabs";
 import HomestayLogo from "./header/HomestayLogo";
 import ToggleMode from "./header/ToggleMode";
 import UserProfile from "./header/UserProfile";
-import { ThemeContext } from "@/App";
 
 const Header = React.memo(() => {
-  const { colorMode } = useContext(ThemeContext);
   return (
     <Box>
       {/* big screen */}
@@ -34,10 +32,7 @@ const Header = React.memo(() => {
         <Input variant="rounded" size="sm" className="w-full h-10">
           <InputField placeholder="Anywhere • Any week • Add guests" />
           <InputSlot className="bg-primary-500 rounded-full h-6 w-6 m-1.5">
-            <InputIcon
-              as={SearchIcon}
-              color={colorMode === "light" ? "#FEFEFF" : "#171717"}
-            />
+            <InputIcon as={SearchIcon} className="text-typography-0" />
           </InputSlot>
         </Input>
       </Box>

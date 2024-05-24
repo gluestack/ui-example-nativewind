@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import {
   Checkbox,
   CheckboxGroup,
@@ -15,7 +15,6 @@ import {
   ChevronDownIcon,
   ChevronUpIcon,
 } from "../../components/ui";
-import { ThemeContext } from "@/App";
 
 const AmenitiesSection = () => {
   const sidebarFiltersAmmenities = [
@@ -48,7 +47,6 @@ const AmenitiesSection = () => {
       value: "hair-dryer",
     },
   ];
-  const { colorMode } = useContext(ThemeContext);
   const [values, setValues] = React.useState(["wifi", "air-conditioning"]);
   const [viewAllComponents, setViewAllComponents] = React.useState(false);
 
@@ -71,10 +69,7 @@ const AmenitiesSection = () => {
               className="justify-start my-2"
             >
               <CheckboxIndicator>
-                <CheckboxIcon
-                  as={CheckIcon}
-                  color={colorMode === "light" ? "#FEFEFF" : "#171717"}
-                />
+                <CheckboxIcon as={CheckIcon} />
               </CheckboxIndicator>
               <CheckboxLabel>{ammenity.label}</CheckboxLabel>
             </Checkbox>

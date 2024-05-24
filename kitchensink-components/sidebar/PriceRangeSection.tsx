@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import {
   Checkbox,
   Slider,
@@ -16,10 +16,8 @@ import {
   TooltipContent,
   TooltipText,
 } from "../../components/ui";
-import { ThemeContext } from "@/App";
 
 const PriceRangeSection = ({ setScrollEnabled }: { setScrollEnabled: any }) => {
-  const { colorMode } = useContext(ThemeContext);
   const [sliderValue, setSliderValue] = React.useState(3500);
   const [values, setValues] = React.useState(["entirePlace"]);
   const handleChange = (value: any) => {
@@ -93,10 +91,7 @@ const PriceRangeSection = ({ setScrollEnabled }: { setScrollEnabled: any }) => {
               className="my-2"
             >
               <CheckboxIndicator>
-                <CheckboxIcon
-                  as={CheckIcon}
-                  color={colorMode === "light" ? "#FEFEFF" : "#171717"}
-                />
+                <CheckboxIcon as={CheckIcon} />
               </CheckboxIndicator>
               <CheckboxLabel>{priceRange.label}</CheckboxLabel>
             </Checkbox>

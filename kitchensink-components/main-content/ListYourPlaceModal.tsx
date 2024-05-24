@@ -109,11 +109,10 @@ const handleClose = (setModalVisible: any) => {
 };
 
 const ListYourPlaceModal = ({ modalVisible, setModalVisible }: any) => {
-  const { colorMode } = useContext(ThemeContext);
   const [modalFormStep, setModalFormStep] = React.useState(0);
 
   useEffect(() => {
-    if(modalVisible === true) {
+    if (modalVisible === true) {
       setModalFormStep(0);
     }
   }, [modalVisible]);
@@ -171,11 +170,7 @@ const ListYourPlaceModal = ({ modalVisible, setModalVisible }: any) => {
               </Heading>
             </HStack>
             <ModalCloseButton>
-              <Icon
-                as={CloseIcon}
-                className="w-4 h-4"
-                color={colorMode === "light" ? "#404040" : "#A3A3A3"}
-              />
+              <Icon as={CloseIcon} className="w-4 h-4" />
             </ModalCloseButton>
           </ModalHeader>
           <ModalBody>
@@ -308,7 +303,6 @@ const ModalContent1 = ({ setModalFormStep, toast }: any) => {
   );
   const [selectedPropertyTypeOptions, setSelectedPropertyTypeOptions]: any =
     useState([]);
-  const { colorMode } = useContext(ThemeContext);
 
   const handlePropertyTypeSelection = (item: any) => {
     if (selectedPropertyTypeOptions.includes(item)) {
@@ -360,19 +354,13 @@ const ModalContent1 = ({ setModalFormStep, toast }: any) => {
               <HStack space="md">
                 <Radio value="Residential">
                   <RadioIndicator>
-                    <RadioIcon
-                      as={CircleIcon}
-                      color={colorMode === "light" ? "#292929" : "#FAFAFA"}
-                    />
+                    <RadioIcon as={CircleIcon} />
                   </RadioIndicator>
                   <RadioLabel>Residential</RadioLabel>
                 </Radio>
                 <Radio value="Commercial">
                   <RadioIndicator>
-                    <RadioIcon
-                      as={CircleIcon}
-                      color={colorMode === "light" ? "#292929" : "#FAFAFA"}
-                    />
+                    <RadioIcon as={CircleIcon} />
                   </RadioIndicator>
                   <RadioLabel>Commercial</RadioLabel>
                 </Radio>
@@ -487,7 +475,6 @@ const ModalContent3 = ({ setModalVisible, toast }: any) => {
 };
 
 const AmenitiesSection = () => {
-  const { colorMode } = useContext(ThemeContext);
   const [values, setValues] = React.useState(["wifi", "air-conditioning"]);
   return (
     <VStack space="sm">
@@ -509,10 +496,7 @@ const AmenitiesSection = () => {
                 accessibilityLabel={ammenity.value}
               >
                 <CheckboxIndicator>
-                  <CheckboxIcon
-                    as={CheckIcon}
-                    color={colorMode === "light" ? "#FEFEFF" : "#171717"}
-                  />
+                  <CheckboxIcon as={CheckIcon} />
                 </CheckboxIndicator>
                 <CheckboxLabel>{ammenity.label}</CheckboxLabel>
               </Checkbox>

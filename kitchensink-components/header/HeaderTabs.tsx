@@ -39,7 +39,7 @@ const HeaderTabs = () => {
           </Text>
         </Pressable>
         <Pressable className="ml-3 p-2 bg-primary-500 rounded-full">
-          <Icon as={SearchIcon} className="w-4 h-4 text-typography-0" />
+          <Icon as={SearchIcon} className="w-4 h-4 stroke-typography-0" />
         </Pressable>
       </HStack>
     </HStack>

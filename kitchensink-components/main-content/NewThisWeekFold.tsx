@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext } from "react";
+import React, { useRef, useState } from "react";
 import {
   Box,
   HStack,
@@ -9,7 +9,6 @@ import {
 } from "../../components/ui";
 import { ScrollView } from "react-native";
 import { ChevronLeft, ChevronRight } from "lucide-react-native";
-import { ThemeContext } from "../../App";
 
 const data = [
   {
@@ -152,7 +151,6 @@ const NewThisWeekFold = () => {
 };
 
 const ScrollLeft = ({ handleScrollLeft, disabled }: any) => {
-  const { colorMode } = useContext(ThemeContext);
   return (
     <Center className="absolute left-0 h-full hidden md:flex">
       <Pressable
@@ -164,18 +162,13 @@ const ScrollLeft = ({ handleScrollLeft, disabled }: any) => {
         disabled={disabled}
         onPress={handleScrollLeft}
       >
-        <Icon
-          as={ChevronLeft}
-          size="lg"
-          color={colorMode === "light" ? "#535252" : "#DCDBDB"}
-        />
+        <Icon as={ChevronLeft} size="lg" className="text-background-700" />
       </Pressable>
     </Center>
   );
 };
 
 const ScrollRight = ({ handleScrollRight, disabled }: any) => {
-  const { colorMode } = useContext(ThemeContext);
   return (
     <Center className="absolute right-0 h-full hidden md:flex">
       <Pressable
@@ -187,11 +180,7 @@ const ScrollRight = ({ handleScrollRight, disabled }: any) => {
         onPress={handleScrollRight}
         disabled={disabled}
       >
-        <Icon
-          as={ChevronRight}
-          size="lg"
-          color={colorMode === "light" ? "#535252" : "#DCDBDB"}
-        />
+        <Icon as={ChevronRight} size="lg" className="text-background-700" />
       </Pressable>
     </Center>
   );

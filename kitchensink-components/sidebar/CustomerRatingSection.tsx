@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { ThemeContext } from "../../App";
+import React from "react";
 import {
   Checkbox,
   CheckboxGroup,
@@ -33,7 +32,6 @@ const CustomerRatingSection = () => {
     },
   ];
   const [values, setValues] = React.useState(["wifi", "air-conditioning"]);
-  const { colorMode } = useContext(ThemeContext);
 
   return (
     <VStack space="md" className="w-full">
@@ -53,17 +51,13 @@ const CustomerRatingSection = () => {
               className="my-2"
             >
               <CheckboxIndicator>
-                <CheckboxIcon
-                  as={CheckIcon}
-                  color={colorMode === "light" ? "#FEFEFF" : "#171717"}
-                />
+                <CheckboxIcon as={CheckIcon} />
               </CheckboxIndicator>
               <CheckboxLabel className="flex flex-row items-center gap-1">
                 <Icon
                   as={StarIcon}
                   size="2xs"
-                  color={colorMode === "light" ? "#262627" : "#F5F5F5"}
-                  fill={colorMode === "light" ? "#262627" : "#F5F5F5"}
+                  className="text-typography-900 fill-typography-900"
                 />{" "}
                 {placeType.label}
               </CheckboxLabel>

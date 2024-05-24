@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import {
   Box,
   HStack,
@@ -15,7 +15,6 @@ import {
 import { ChevronRight, Heart } from "lucide-react-native";
 import { AnimatePresence, Motion } from "@legendapp/motion";
 import { ScrollView } from "react-native";
-import { ThemeContext } from "../../App";
 
 const tabsData = [
   {
@@ -368,7 +367,6 @@ const HomestayInfoTabs = ({ tabs, activeTab, setActiveTab }: any) => {
 
 const TabPanelData = ({ activeTab }: any) => {
   const [likes, setLikes]: any = React.useState([]);
-  const { colorMode } = useContext(ThemeContext);
 
   return (
     <VStack className="justify-between lg:flex-row">
@@ -411,8 +409,7 @@ const TabPanelData = ({ activeTab }: any) => {
                               <Icon
                                 as={ChevronRight}
                                 size="sm"
-                                className="self-center"
-                                color="white"
+                                className="self-center text-white"
                               />
                             </Box>
                           </>
@@ -461,16 +458,11 @@ const TabPanelData = ({ activeTab }: any) => {
                           <Icon
                             as={Heart}
                             size="lg"
-                            fill={
+                            className={`${
                               likes.includes(image.title) === true
-                                ? "red"
-                                : "gray"
-                            }
-                            color={
-                              likes.includes(image.title) === true
-                                ? "red"
-                                : "white"
-                            }
+                                ? "text-red-500 fill-red-500"
+                                : "text-white fill-gray-500"
+                            }`}
                           />
                         </Motion.View>
                       </AnimatePresence>
@@ -504,16 +496,7 @@ const TabPanelData = ({ activeTab }: any) => {
                                 <Icon
                                   as={StarIcon}
                                   size="2xs"
-                                  fill={
-                                    colorMode === "light"
-                                      ? "#272625"
-                                      : "#F6F6F6"
-                                  }
-                                  color={
-                                    colorMode === "light"
-                                      ? "#272625"
-                                      : "#F6F6F6"
-                                  }
+                                  className="text-background-900 fill-background-900"
                                 />
                                 <Text
                                   size="sm"
@@ -542,4 +525,5 @@ const TabPanelData = ({ activeTab }: any) => {
     </VStack>
   );
 };
+
 export default HomestayInformationFold;
