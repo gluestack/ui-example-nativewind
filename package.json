@@ -8,7 +8,8 @@
     "ios": "expo run:ios",
     "web": "expo start --web",
     "build": "echo 'Hello world'",
-    "start": "serve dist --single"
+    "start": "serve dist --single",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@expo-google-fonts/inter": "^0.2.3",
@@ -30,7 +31,7 @@
     "@gluestack-ui/link": "latest",
     "@gluestack-ui/menu": "latest",
     "@gluestack-ui/modal": "latest",
-    "@gluestack-ui/nativewind-utils": "latest",
+    "@gluestack-ui/nativewind-utils": "^1.0.20",
     "@gluestack-ui/overlay": "latest",
     "@gluestack-ui/popover": "latest",
     "@gluestack-ui/pressable": "latest",

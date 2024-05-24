@@ -1,5 +1,7 @@
 'use client';
+import React, { useMemo } from 'react';
 import { H4 } from '@expo/html-elements';
+import { Svg } from 'react-native-svg';
 import { createActionsheet } from '@gluestack-ui/actionsheet';
 import {
   Pressable,
@@ -16,14 +18,57 @@ import { tva } from '@gluestack-ui/nativewind-utils/tva';
 import type { VariantProps } from '@gluestack-ui/nativewind-utils';
 import { withStyleContext } from '@gluestack-ui/nativewind-utils/withStyleContext';
 import { withStyleContextAndStates } from '@gluestack-ui/nativewind-utils/withStyleContextAndStates';
-import { cssInterop } from '@gluestack-ui/nativewind-utils/cssInterop';
+import { cssInterop } from 'nativewind';
 import {
   Motion,
   AnimatePresence,
   createMotionAnimatedComponent,
 } from '@legendapp/motion';
 
-import React from 'react';
+const PrimitiveIcon = React.forwardRef(
+  (
+    {
+      height,
+      width,
+      fill,
+      color,
+      size,
+      stroke = 'currentColor',
+      as: AsComp,
+      ...props
+    }: any,
+    ref?: any
+  ) => {
+    const sizeProps = useMemo(() => {
+      return size ? { size } : { height, width };
+    }, [size, height, width]);
+
+    const colorProps =
+      stroke === 'currentColor' && color !== undefined ? color : stroke;
+
+    if (AsComp) {
+      return (
+        <AsComp
+          ref={ref}
+          fill={fill}
+          {...props}
+          {...sizeProps}
+          stroke={colorProps}
+        />
+      );
+    }
+    return (
+      <Svg
+        ref={ref}
+        height={height}
+        width={width}
+        fill={fill}
+        stroke={colorProps}
+        {...props}
+      />
+    );
+  }
+);
 
 const AnimatedPressable = createMotionAnimatedComponent(Pressable);
 export const UIActionsheet = createActionsheet({
@@ -42,7 +87,7 @@ export const UIActionsheet = createActionsheet({
   FlatList: FlatList,
   SectionList: SectionList,
   SectionHeaderText: H4,
-  Icon: View,
+  Icon: PrimitiveIcon,
   AnimatePresence: AnimatePresence,
 });
 
@@ -58,7 +103,19 @@ cssInterop(UIActionsheet.VirtualizedList, { className: 'style' });
 cssInterop(UIActionsheet.FlatList, { className: 'style' });
 cssInterop(UIActionsheet.SectionList, { className: 'style' });
 cssInterop(UIActionsheet.SectionHeaderText, { className: 'style' });
-cssInterop(UIActionsheet.Icon, { className: 'style' });
+cssInterop(UIActionsheet.Icon, {
+  className: {
+    target: 'style',
+    nativeStyleToProp: {
+      height: true,
+      width: true,
+      // @ts-ignore
+      fill: true,
+      color: true,
+      stroke: true,
+    },
+  },
+});
 
 const actionsheetStyle = tva({ base: 'w-full h-full web:pointer-events-none' });
 
@@ -175,7 +232,7 @@ const actionsheetSectionHeaderTextStyle = tva({
 });
 
 const actionsheetIconStyle = tva({
-  base: '',
+  base: 'text-background-500 fill-none',
   variants: {
     size: {
       '2xs': 'h-3 w-3',
@@ -467,30 +524,32 @@ const ActionsheetIcon = React.forwardRef(
   (
     {
       className,
-      as: AsComp,
       size = 'sm',
-      fill = 'none',
-      color = 'gray',
       ...props
     }: IActionsheetIconProps & {
       as?: any;
-      fill?: string;
-      color?: string;
       className?: any;
     },
     ref?: any
   ) => {
-    if (AsComp) {
+    if (typeof size === 'number') {
       return (
-        <AsComp
-          className={actionsheetIconStyle({
-            class: className,
-            size,
-          })}
-          fill={fill}
-          color={color}
+        <UIActionsheet.Icon
           ref={ref}
           {...props}
+          className={actionsheetIconStyle({ class: className })}
+          size={size}
+        />
+      );
+    } else if (
+      (props.height !== undefined || props.width !== undefined) &&
+      size === undefined
+    ) {
+      return (
+        <UIActionsheet.Icon
+          ref={ref}
+          {...props}
+          className={actionsheetIconStyle({ class: className })}
         />
       );
     }
@@ -500,9 +559,6 @@ const ActionsheetIcon = React.forwardRef(
           class: className,
           size,
         })}
-        // @ts-ignore
-        fill={fill}
-        color={color}
         ref={ref}
         {...props}
       />
