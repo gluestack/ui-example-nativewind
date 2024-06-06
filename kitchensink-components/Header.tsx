@@ -32,7 +32,7 @@ const Header = React.memo(() => {
         <Input variant="rounded" size="sm" className="w-full h-10">
           <InputField placeholder="Anywhere • Any week • Add guests" />
           <InputSlot className="bg-primary-500 rounded-full h-6 w-6 m-1.5">
-            <InputIcon as={SearchIcon} className="text-typography-0" />
+            <InputIcon as={SearchIcon} className="stroke-typography-0" />
           </InputSlot>
         </Input>
       </Box>

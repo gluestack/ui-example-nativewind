@@ -26,7 +26,7 @@ const MainContentHeader = ({ setActiveTab, activeTab }: any) => {
           }}
           className="hidden md:flex ml-auto "
         >
-          <ButtonIcon as={List} className="text-typography-800" />
+          <ButtonIcon as={List} className="stroke-typography-800" />
           <ButtonText className="pl-2 text-typography-800">
             List your place
           </ButtonText>

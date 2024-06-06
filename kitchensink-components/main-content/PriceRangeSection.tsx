@@ -12,7 +12,9 @@ import {
   CheckboxIndicator,
   CheckboxLabel,
   CheckboxIcon,
-  CheckIcon
+  CheckIcon,
+  SliderThumb,
+  TooltipContent
 } from "../../components/ui";
 
 const PriceRangeSection = () => {
@@ -60,18 +62,18 @@ const PriceRangeSection = () => {
         <Tooltip
           placement="bottom"
           trigger={(triggerProps: any) => {
-            return <Slider.Thumb {...triggerProps} />;
+            return <SliderThumb {...triggerProps} />;
           }}
         >
-          <Tooltip.Content>
-            <Text color="$white">₹{sliderValue}</Text>
-          </Tooltip.Content>
+          <TooltipContent>
+            <Text className="white">₹{sliderValue}</Text>
+          </TooltipContent>
         </Tooltip>
       </Slider>
       <CheckboxGroup
         value={values}
         onChange={setValues}
-        mt="$3"
+        className="mt-3"
         accessibilityLabel="price filter"
       >
         {sidebarFiltersPriceRange.map((priceRange: any) => {
@@ -79,14 +81,14 @@ const PriceRangeSection = () => {
             <Checkbox
               value={priceRange.value}
               size="sm"
-              my="$2"
+              className="my-2"
               key={priceRange.value}
               accessibilityLabel={priceRange.value}
             >
               <CheckboxIndicator>
                 <CheckboxIcon as={CheckIcon} />
               </CheckboxIndicator>
-              <CheckboxLabel ml="$2">{priceRange.label}</CheckboxLabel>
+              <CheckboxLabel className="ml-2">{priceRange.label}</CheckboxLabel>
             </Checkbox>
           );
         })}

@@ -409,7 +409,7 @@ const TabPanelData = ({ activeTab }: any) => {
                               <Icon
                                 as={ChevronRight}
                                 size="sm"
-                                className="self-center text-white"
+                                className="self-center stroke-white"
                               />
                             </Box>
                           </>
@@ -460,8 +460,8 @@ const TabPanelData = ({ activeTab }: any) => {
                             size="lg"
                             className={`${
                               likes.includes(image.title) === true
-                                ? "text-red-500 fill-red-500"
-                                : "text-white fill-gray-500"
+                                ? "stroke-red-500 fill-red-500"
+                                : "stroke-white fill-gray-500"
                             }`}
                           />
                         </Motion.View>
@@ -496,7 +496,7 @@ const TabPanelData = ({ activeTab }: any) => {
                                 <Icon
                                   as={StarIcon}
                                   size="2xs"
-                                  className="text-background-900 fill-background-900"
+                                  className="stroke-background-900 fill-background-900"
                                 />
                                 <Text
                                   size="sm"

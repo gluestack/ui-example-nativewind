@@ -52,7 +52,7 @@ const FiltersAppliedSection = () => {
                 setAppliedFilters(newFilters);
               }}
             >
-              <Icon as={CloseIcon} size="sm" className="text-background-600" />
+              <Icon as={CloseIcon} size="sm" className="stroke-background-600" />
             </Pressable>
           </Badge>
         ))}

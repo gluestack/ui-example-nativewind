@@ -162,7 +162,7 @@ const ScrollLeft = ({ handleScrollLeft, disabled }: any) => {
         disabled={disabled}
         onPress={handleScrollLeft}
       >
-        <Icon as={ChevronLeft} size="lg" className="text-background-700" />
+        <Icon as={ChevronLeft} size="lg" className="stroke-background-700" />
       </Pressable>
     </Center>
   );
@@ -180,7 +180,7 @@ const ScrollRight = ({ handleScrollRight, disabled }: any) => {
         onPress={handleScrollRight}
         disabled={disabled}
       >
-        <Icon as={ChevronRight} size="lg" className="text-background-700" />
+        <Icon as={ChevronRight} size="lg" className="stroke-background-700" />
       </Pressable>
     </Center>
   );

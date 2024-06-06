@@ -34,8 +34,8 @@ const MobileBottomTabs = ({ bottomTabs, activeTab, setActiveTab }: any) => {
                   size={20}
                   className={`${
                     activeTab === tab.label
-                      ? "text-primary-500"
-                      : "text-typography-400"
+                      ? "stroke-primary-500"
+                      : "stroke-typography-400"
                   }`}
                 />
                 <Text

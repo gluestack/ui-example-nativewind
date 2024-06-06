@@ -57,7 +57,7 @@ const CustomerRatingSection = () => {
                 <Icon
                   as={StarIcon}
                   size="2xs"
-                  className="text-typography-900 fill-typography-900"
+                  className="stroke-typography-900 fill-typography-900"
                 />{" "}
                 {placeType.label}
               </CheckboxLabel>
