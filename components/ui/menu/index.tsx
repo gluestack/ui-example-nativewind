@@ -2,17 +2,18 @@
 import React from 'react';
 import { createMenu } from '@gluestack-ui/menu';
 import { tva } from '@gluestack-ui/nativewind-utils/tva';
-import { cssInterop } from '@gluestack-ui/nativewind-utils/cssInterop';
-import { Pressable, Text } from 'react-native';
+import { cssInterop } from 'nativewind';
+import { Pressable, Text, Platform } from 'react-native';
 import { Motion, AnimatePresence } from '@legendapp/motion';
 import type { VariantProps } from '@gluestack-ui/nativewind-utils';
+import { withStates } from '@gluestack-ui/nativewind-utils/withStates';
 
 const menuStyle = tva({
-  base: 'rounded bg-background-0 overflow-hidden border border-outline-200 shadow-md shadow-background-100 p-1 dark:shadow-none',
+  base: 'rounded-md bg-background-0 border border-outline-100 p-1 shadow-hard-5',
 });
 
 const menuItemStyle = tva({
-  base: 'min-w-[200px] p-3 flex-row items-center data-[hover=true]:bg-background-50 data-[active=true]:bg-background-100 data-[focus=true]:bg-background-50 data-[focus=true]:web:outline-none data-[focus=true]:web:outline-0 data-[disabled=true]:opacity-40 data-[disabled=true]:web:cursor-not-allowed data-[focus-visible=true]:web:outline-2 data-[focus-visible=true]:web:outline-primary-700 data-[focus-visible=true]:web:outline data-[focus-visible=true]:web:cursor-pointer data-[disabled=true]:data-[focus=true]:bg-transparent rounded-sm',
+  base: 'min-w-[200px] p-3 flex-row items-center rounded data-[hover=true]:bg-background-50 data-[active=true]:bg-background-100 data-[focus=true]:bg-background-50 data-[focus=true]:web:outline-none data-[focus=true]:web:outline-0 data-[disabled=true]:opacity-40 data-[disabled=true]:web:cursor-not-allowed data-[focus-visible=true]:web:outline-2 data-[focus-visible=true]:web:outline-primary-700 data-[focus-visible=true]:web:outline data-[focus-visible=true]:web:cursor-pointer data-[disabled=true]:data-[focus=true]:bg-transparent',
 });
 
 const menuBackdropStyle = tva({
@@ -94,9 +95,10 @@ const Item = React.forwardRef(
     );
   }
 );
+
 export const UIMenu = createMenu({
   Root: Motion.View,
-  Item: Item,
+  Item: Platform.OS === 'web' ? Item : withStates(Item),
   Label: Text,
   Backdrop: BackdropPressable,
   AnimatePresence: AnimatePresence,
@@ -117,21 +119,19 @@ const Menu = React.forwardRef(
         ref={ref}
         initial={{
           opacity: 0,
+          scale: 0.8,
         }}
         animate={{
           opacity: 1,
+          scale: 1,
         }}
         exit={{
           opacity: 0,
+          scale: 0.8,
         }}
         transition={{
-          type: 'spring',
-          damping: 18,
-          stiffness: 250,
-          opacity: {
-            type: 'timing',
-            duration: 200,
-          },
+          type: 'timing',
+          duration: 100,
         }}
         className={menuStyle({
           class: className,

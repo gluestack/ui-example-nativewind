@@ -2,14 +2,14 @@
 import React from 'react';
 import { createAvatar } from '@gluestack-ui/avatar';
 
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, Platform } from 'react-native';
 
 import { tva } from '@gluestack-ui/nativewind-utils/tva';
 import {
   withStyleContext,
   useStyleContext,
 } from '@gluestack-ui/nativewind-utils/withStyleContext';
-import { cssInterop } from '@gluestack-ui/nativewind-utils/cssInterop';
+import { cssInterop } from 'nativewind';
 const SCOPE = 'AVATAR';
 import type { VariantProps } from '@gluestack-ui/nativewind-utils';
 
@@ -61,7 +61,7 @@ const avatarGroupStyle = tva({
 });
 
 const avatarBadgeStyle = tva({
-  base: 'w-5 h-5 bg-success-500 rounded-full absolute right-0 bottom-0 border-white border-2',
+  base: 'w-5 h-5 bg-success-500 rounded-full absolute right-0 bottom-0 border-background-0 border-2',
   parentVariants: {
     size: {
       'xs': 'w-2 h-2',
@@ -166,6 +166,12 @@ export const AvatarImage = React.forwardRef(
         className={avatarImageStyle({
           class: className,
         })}
+        //@ts-ignore
+        style={
+          Platform.OS === 'web'
+            ? { height: 'revert-layer', width: 'revert-layer' }
+            : undefined
+        }
       />
     );
   }
