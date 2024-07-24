@@ -8,11 +8,6 @@ const MobileBottomTabs = ({ bottomTabs, activeTab, setActiveTab }: any) => {
   const { colorMode } = useContext(ThemeContext);
   const [modalVisible, setModalVisible] = React.useState(false);
   const [actionsheetVisible, setActionsheetVisible] = React.useState(false);
-  const iconColor = (tab: any) => {
-    const lightMode = activeTab === tab.label ? "#333333" : "#A3A3A3";
-    const darkMode = activeTab === tab.label ? "#F0F0F0" : "#8C8C8C";
-    return colorMode === "light" ? lightMode : darkMode;
-  };
 
   return (
     <>
@@ -33,10 +28,19 @@ const MobileBottomTabs = ({ bottomTabs, activeTab, setActiveTab }: any) => {
                 }
               }}
               disabled={tab.disabled}
+              //@ts-ignore
               opacity={tab.disabled ? 0.5 : 1}
             >
               <VStack className="items-center">
-                <Icon as={tab.icon} color={iconColor(tab)} size={20} />
+                <Icon
+                  as={tab.icon}
+                  size={20}
+                  className={`${
+                    activeTab === tab.label
+                      ? "text-typography-900"
+                      : "text-typography-400"
+                  }`}
+                />
                 <Text
                   size="xs"
                   className={`${

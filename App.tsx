@@ -1,10 +1,7 @@
 import "./global.css";
 import React from "react";
 import HomestayPage from "./kitchensink-components/HomestayPage";
-import {
-  SafeAreaView,
-  GluestackUIProvider as NativewindProvider,
-} from "./components/ui";
+import { SafeAreaView, GluestackUIProvider } from "./components/ui";
 import * as Linking from "expo-linking";
 
 let defaultTheme: "dark" | "light" = "light";
@@ -14,20 +11,10 @@ Linking.getInitialURL().then((url: any) => {
   defaultTheme = queryParams?.iframeMode ?? defaultTheme;
 });
 
-// import { useFonts } from "expo-font";
-// import {
-//   Inter_400Regular,
-//   Inter_500Medium,
-//   Inter_600SemiBold,
-//   Inter_700Bold,
-//   Inter_900Black,
-// } from "@expo-google-fonts/inter";
-
 type ThemeContextType = {
   colorMode?: "dark" | "light";
   toggleColorMode?: () => void;
 };
-
 export const ThemeContext = React.createContext<ThemeContextType>({
   colorMode: "light",
   toggleColorMode: () => {},
@@ -37,19 +24,6 @@ export default function App() {
   const [colorMode, setColorMode] = React.useState<"dark" | "light">(
     defaultTheme
   );
-
-  //TODO: This is breaking the production web app, need to fix this.
-  // const [fontsLoaded] = useFonts({
-  //   Inter_400Regular,
-  //   Inter_500Medium,
-  //   Inter_600SemiBold,
-  //   Inter_700Bold,
-  //   Inter_900Black,
-  // });
-
-  // if (!fontsLoaded) {
-  //   return null;
-  // }
 
   const toggleColorMode = async () => {
     setColorMode((prev) => (prev === "light" ? "dark" : "light"));
@@ -62,7 +36,7 @@ export default function App() {
         className={`${colorMode === "light" ? "bg-[#E5E5E5]" : "bg-[#262626]"}`}
       />
       <ThemeContext.Provider value={{ colorMode, toggleColorMode }}>
-        <NativewindProvider mode={colorMode}>
+        <GluestackUIProvider mode={colorMode}>
           {/* bottom SafeAreaView */}
           <SafeAreaView
             className={`${
@@ -71,7 +45,7 @@ export default function App() {
           >
             <HomestayPage />
           </SafeAreaView>
-        </NativewindProvider>
+        </GluestackUIProvider>
       </ThemeContext.Provider>
     </>
   );

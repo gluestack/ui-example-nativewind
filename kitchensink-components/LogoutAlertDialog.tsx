@@ -26,27 +26,22 @@ const LogoutAlertDialog = ({
   return (
     <AlertDialog isOpen={openLogoutAlertDialog} onClose={handleClose}>
       <AlertDialogBackdrop />
-      <AlertDialogContent>
+      <AlertDialogContent className="p-4">
         <AlertDialogHeader>
           <Heading>Logout</Heading>
           <AlertDialogCloseButton>
             <Icon as={CloseIcon} />
           </AlertDialogCloseButton>
         </AlertDialogHeader>
-        <AlertDialogBody>
-          <Text>Are you sure, you want to logout?</Text>
+        <AlertDialogBody className="" contentContainerClassName="">
+          <Text className="mb-6">Are you sure, you want to logout?</Text>
         </AlertDialogBody>
         <AlertDialogFooter>
-          <Button
-            variant="outline"
-            action="secondary"
-            onPress={handleClose}
-            className="mr-3"
-          >
+          <Button variant="outline" action="secondary" onPress={handleClose}>
             <ButtonText>Cancel</ButtonText>
           </Button>
           <Button action="negative" onPress={handleClose}>
-            <ButtonText>Logout</ButtonText>
+            <ButtonText className="text-white">Logout</ButtonText>
           </Button>
         </AlertDialogFooter>
       </AlertDialogContent>

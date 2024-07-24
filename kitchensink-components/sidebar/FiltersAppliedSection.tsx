@@ -17,6 +17,7 @@ const FiltersAppliedSection = () => {
   const {colorMode} = useContext(ThemeContext);
   const filters = ["Private room", "Wifi", "Air conditioning"];
   const [appliedFilters, setAppliedFilters]: any = React.useState(filters);
+
   return (
     <Box className="border rounded-md p-4 border-outline-100">
       <HStack className="justify-between items-center">

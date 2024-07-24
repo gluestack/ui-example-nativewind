@@ -46,7 +46,7 @@ const PriceRangeSection = ({ setScrollEnabled }: { setScrollEnabled: any }) => {
   ];
 
   return (
-    <VStack space="md">
+    <VStack space="md" className="px-2">
       <Heading size="sm">Price Range</Heading>
       <Slider
         minValue={800}

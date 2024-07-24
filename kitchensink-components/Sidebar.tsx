@@ -14,14 +14,12 @@ const Sidebar = () => {
     <ScrollView className="w-full" scrollEnabled={scrollEnabled}>
       <VStack space="xl" className="py-6 px-4">
         <FiltersAppliedSection />
-        <VStack space="xl" className="px-2">
-          <SortBySection />
-          <PlaceTypeSection />
-          <AmenitiesSection />
-          <PriceRangeSection setScrollEnabled={setScrollEnabled} />
-          <BookingOptions />
-          <CustomerRatingSection />
-        </VStack>
+        <SortBySection />
+        <PlaceTypeSection />
+        <AmenitiesSection />
+        <PriceRangeSection setScrollEnabled={setScrollEnabled} />
+        <BookingOptions />
+        <CustomerRatingSection />
       </VStack>
     </ScrollView>
   );

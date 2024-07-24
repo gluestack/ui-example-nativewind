@@ -113,7 +113,7 @@ const ListYourPlaceModal = ({ modalVisible, setModalVisible }: any) => {
   const [modalFormStep, setModalFormStep] = React.useState(0);
 
   useEffect(() => {
-    if(modalVisible === true) {
+    if (modalVisible === true) {
       setModalFormStep(0);
     }
   }, [modalVisible]);
@@ -163,7 +163,7 @@ const ListYourPlaceModal = ({ modalVisible, setModalVisible }: any) => {
         avoidKeyboard
       >
         <ModalBackdrop />
-        <ModalContent>
+        <ModalContent className="p-4">
           <ModalHeader>
             <HStack className="items-center">
               <Heading size="sm" className="font-semibold">
@@ -178,7 +178,7 @@ const ListYourPlaceModal = ({ modalVisible, setModalVisible }: any) => {
               />
             </ModalCloseButton>
           </ModalHeader>
-          <ModalBody>
+          <ModalBody className="mb-0">
             <VStack space="md">{getModalStepContent(modalFormStep)}</VStack>
           </ModalBody>
         </ModalContent>
@@ -198,7 +198,7 @@ const SaveForLaterButton = ({ setModalVisible, toast }: any) => {
       placement: "top",
       render: ({ id }: any) => {
         return (
-          <RenderToast
+          <RenderToastContent
             description="Your property listing has been successfully saved."
             nativeId={id}
           />
@@ -249,14 +249,14 @@ const PreviousStepperButton = ({ setModalFormStep, step }: any) => {
   );
 };
 
-const RenderToast = ({ description, title, id }: any) => {
+const RenderToastContent = ({ description, title, id }: any) => {
   return (
-    <Toast action="success" id={id} className="top-[150px]">
-      <HStack space="xs" className="items-center">
-        <Icon as={CheckCircleIcon} />
-        <ToastTitle>{title}</ToastTitle>
+    <Toast action="success" id={id} className="top-[150px] flex flex-row">
+      <Icon as={CheckCircleIcon} className="stroke-typography-0 mt-0.5" />
+      <VStack>
+        {title && <ToastTitle>{title}</ToastTitle>}
         <ToastDescription>{description}</ToastDescription>
-      </HStack>
+      </VStack>
     </Toast>
   );
 };
@@ -284,7 +284,7 @@ const PostNowButton = ({ setModalVisible, toast }: any) => {
           placement: "top",
           render: ({ id }: any) => {
             return (
-              <RenderToast
+              <RenderToastContent
                 description="Your property has been listed."
                 title="Congratulations!"
                 nativeId={id}
@@ -499,6 +499,7 @@ const AmenitiesSection = () => {
           value={values}
           onChange={setValues}
           accessibilityLabel="ammenities"
+          className="ml-1"
         >
           {sidebarFiltersAmmenities.map((ammenity: any) => {
             return (

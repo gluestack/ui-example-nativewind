@@ -34,7 +34,7 @@ const SortBySection = () => {
   const [values, setValues] = React.useState("Top ratings");
 
   return (
-    <VStack space="sm">
+    <VStack space="sm" className="px-2">
       <Heading size="sm">Sort by</Heading>
       <RadioGroup
         value={values}

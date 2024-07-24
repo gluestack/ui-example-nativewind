@@ -7,7 +7,7 @@ const BookingOptions = () => {
   const [mealsIncluded, setMealsIncluded] = React.useState(false);
 
   return (
-    <VStack space="md">
+    <VStack space="md" className="px-2">
       <Heading size="sm">Booking Options</Heading>
 
       <VStack className="w-full">

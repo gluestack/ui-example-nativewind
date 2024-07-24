@@ -36,7 +36,7 @@ const CustomerRatingSection = () => {
   const { colorMode } = useContext(ThemeContext);
 
   return (
-    <VStack space="md" className="w-full">
+    <VStack space="md" className="w-full px-2">
       <Heading size="sm">Customer Ratings</Heading>
       <CheckboxGroup
         value={values}
@@ -62,8 +62,7 @@ const CustomerRatingSection = () => {
                 <Icon
                   as={StarIcon}
                   size="2xs"
-                  color={colorMode === "light" ? "#262627" : "#F5F5F5"}
-                  fill={colorMode === "light" ? "#262627" : "#F5F5F5"}
+                  className="fill-typography-900"
                 />{" "}
                 {placeType.label}
               </CheckboxLabel>
