@@ -1,16 +1,66 @@
 'use client';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { createFab } from '@gluestack-ui/fab';
-import { Platform, Text, View } from 'react-native';
+import { Platform, Text } from 'react-native';
 import { Pressable } from 'react-native';
+import { Svg } from 'react-native-svg';
 import { tva } from '@gluestack-ui/nativewind-utils/tva';
 import {
   withStyleContext,
   useStyleContext,
 } from '@gluestack-ui/nativewind-utils/withStyleContext';
 import { withStyleContextAndStates } from '@gluestack-ui/nativewind-utils/withStyleContextAndStates';
-import { cssInterop } from '@gluestack-ui/nativewind-utils/cssInterop';
+import { cssInterop } from 'nativewind';
 import type { VariantProps } from '@gluestack-ui/nativewind-utils';
+
+const PrimitiveIcon = React.forwardRef(
+  (
+    {
+      height,
+      width,
+      fill,
+      color,
+      size,
+      stroke = 'currentColor',
+      as: AsComp,
+      ...props
+    }: any,
+    ref?: any
+  ) => {
+    const sizeProps = useMemo(() => {
+      if (size) return { size };
+      if (height && width) return { height, width };
+      if (height) return { height };
+      if (width) return { width };
+      return {};
+    }, [size, height, width]);
+
+    const colorProps =
+      stroke === 'currentColor' && color !== undefined ? color : stroke;
+
+    if (AsComp) {
+      return (
+        <AsComp
+          ref={ref}
+          fill={fill}
+          {...props}
+          {...sizeProps}
+          stroke={colorProps}
+        />
+      );
+    }
+    return (
+      <Svg
+        ref={ref}
+        height={height}
+        width={width}
+        fill={fill}
+        stroke={colorProps}
+        {...props}
+      />
+    );
+  }
+);
 
 const SCOPE = 'FAB';
 const UIFab = createFab({
@@ -19,15 +69,27 @@ const UIFab = createFab({
       ? withStyleContext(Pressable, SCOPE)
       : withStyleContextAndStates(Pressable, SCOPE),
   Label: Text,
-  Icon: View,
+  Icon: PrimitiveIcon,
 });
 
 cssInterop(UIFab, { className: 'style' });
 cssInterop(UIFab.Label, { className: 'style' });
-cssInterop(UIFab.Icon, { className: 'style' });
+cssInterop(UIFab.Icon, {
+  className: {
+    target: 'style',
+    nativeStyleToProp: {
+      height: true,
+      width: true,
+      // @ts-ignore
+      fill: true,
+      color: true,
+      stroke: true,
+    },
+  },
+});
 
 const fabStyle = tva({
-  base: 'group/fab bg-primary-500 rounded-full z-20 p-4 flex-row items-center justify-center absolute hover:bg-primary-600 active:bg-primary-700 disabled:opacity-40 disabled:pointer-events-all disabled:cursor-not-allowed data-[focus=true]:web:outline-none data-[focus-visible=true]:web:ring-2 data-[focus-visible=true]:web:ring-primary-700',
+  base: 'group/fab bg-primary-500 rounded-full z-20 p-4 flex-row items-center justify-center absolute hover:bg-primary-600 active:bg-primary-700 disabled:opacity-40 disabled:pointer-events-all disabled:cursor-not-allowed data-[focus=true]:web:outline-none data-[focus-visible=true]:web:ring-2 data-[focus-visible=true]:web:ring-indicator-info shadow-hard-2',
   variants: {
     size: {
       sm: 'px-2.5 py-2.5',
@@ -93,7 +155,7 @@ const fabLabelStyle = tva({
 });
 
 const fabIconStyle = tva({
-  base: '',
+  base: 'text-typography-50 hover:text-typography-0 active:text-typography-0 fill-none',
   variants: {
     size: {
       '2xs': 'h-3 w-3',
@@ -172,34 +234,33 @@ const FabIcon = React.forwardRef(
     {
       size,
       className,
-      as: AsComp,
-      fill = 'none',
-      color = 'gray',
       ...props
     }: {
       className?: string;
       as?: any;
-      fill?: string;
-      color?: string;
     } & IFabIconProps,
     ref?: any
   ) => {
     const { size: parentSize } = useStyleContext(SCOPE);
 
-    if (AsComp) {
+    if (typeof size === 'number') {
       return (
-        <AsComp
+        <UIFab.Icon
           ref={ref}
           {...props}
-          fill={fill}
-          color={color}
-          className={fabIconStyle({
-            parentVariants: {
-              size: parentSize,
-            },
-            size,
-            class: className,
-          })}
+          className={fabIconStyle({ class: className })}
+          size={size}
+        />
+      );
+    } else if (
+      (props.height !== undefined || props.width !== undefined) &&
+      size === undefined
+    ) {
+      return (
+        <UIFab.Icon
+          ref={ref}
+          {...props}
+          className={fabIconStyle({ class: className })}
         />
       );
     }
@@ -214,9 +275,6 @@ const FabIcon = React.forwardRef(
           size,
           class: className,
         })}
-        // @ts-ignore
-        fill={fill}
-        color={color}
       />
     );
   }

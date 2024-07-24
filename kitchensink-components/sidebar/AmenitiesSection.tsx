@@ -53,7 +53,7 @@ const AmenitiesSection = () => {
   const [viewAllComponents, setViewAllComponents] = React.useState(false);
 
   return (
-    <VStack space="sm">
+    <VStack space="sm" className="px-2">
       <Heading size="sm">Ammenities</Heading>
       <CheckboxGroup
         value={values}

@@ -461,16 +461,11 @@ const TabPanelData = ({ activeTab }: any) => {
                           <Icon
                             as={Heart}
                             size="lg"
-                            fill={
-                              likes.includes(image.title) === true
-                                ? "red"
-                                : "gray"
-                            }
-                            color={
-                              likes.includes(image.title) === true
-                                ? "red"
-                                : "white"
-                            }
+                            className={`${
+                              likes.includes(image.title)
+                                ? "fill-red-500 stroke-red-500"
+                                : "fill-gray-500 stroke-white"
+                            }`}
                           />
                         </Motion.View>
                       </AnimatePresence>
@@ -504,16 +499,7 @@ const TabPanelData = ({ activeTab }: any) => {
                                 <Icon
                                   as={StarIcon}
                                   size="2xs"
-                                  fill={
-                                    colorMode === "light"
-                                      ? "#272625"
-                                      : "#F6F6F6"
-                                  }
-                                  color={
-                                    colorMode === "light"
-                                      ? "#272625"
-                                      : "#F6F6F6"
-                                  }
+                                  className="stroke-typography-900 fill-typography-900"
                                 />
                                 <Text
                                   size="sm"

@@ -30,7 +30,7 @@ const PlaceTypeSection = () => {
   const [values, setValues] = React.useState(["entirePlace"]);
 
   return (
-    <VStack space="sm">
+    <VStack space="sm" className="px-2">
       <Heading size="sm">Type of place</Heading>
       <CheckboxGroup
         value={values}
