@@ -23,7 +23,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.gluestack.uiexamplenativewind"
+      "package": "com.gluestack.uiexamplenativewind",
+      "versionCode": 2
     },
     "web": {
       "favicon": "./assets/favicon.png",
