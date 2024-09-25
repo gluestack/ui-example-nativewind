@@ -27,6 +27,11 @@ This will start the Expo development server, and you can choose to run the app o
 
 For detailed information on each component and its props, refer to the documentation provided. => https://gluestack.io/ui/docs/home/overview/introduction
 
+### Give it a shot!
+[Try it in your browser](https://ui-example-nativewind.vercel.app) or scan the QR code below <br/><br/>
+<img src="https://qr.expo.dev/eas-update?slug=exp&projectId=42cce9b5-9fbe-4572-92ba-fc43b2437a85&groupId=f8394218-7559-4ca9-8e98-697835723cbe&host=u.expo.dev" alt="expo-icon" width="200" height="200"/> <br/>
+with the Expo Go app on your phone.
+
 ## Created By GeekyAnts
 
 GeekyAnts is a team of React Native experts who love open-source and solving developer problems. We’ve been working on React Native since 2015 and have designed and built React Native apps for almost 200+ clients across the globe. Our clients include startups to big enterprises! Need help with your React Native app?
