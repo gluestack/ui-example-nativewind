@@ -372,9 +372,9 @@ const TabPanelData = ({ activeTab }: any) => {
 
   return (
     <VStack className="justify-between lg:flex-row">
-      {tabsData.map((tab) => {
+      {tabsData.map((tab, index) => {
         return (
-          <>
+          <Box key={index}>
             {tab.name.toLowerCase() === activeTab.title.toLowerCase() &&
               tab.data.map((image: any, index: any) => {
                 return (
@@ -522,7 +522,7 @@ const TabPanelData = ({ activeTab }: any) => {
                   </Box>
                 );
               })}
-          </>
+          </Box>
         );
       })}
     </VStack>

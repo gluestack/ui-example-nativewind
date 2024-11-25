@@ -1,88 +1,32 @@
 'use client';
-import React, { useMemo } from 'react';
+import React from 'react';
 import { createFab } from '@gluestack-ui/fab';
-import { Platform, Text } from 'react-native';
-import { Pressable } from 'react-native';
-import { Svg } from 'react-native-svg';
+import { Pressable, Text } from 'react-native';
 import { tva } from '@gluestack-ui/nativewind-utils/tva';
 import {
   withStyleContext,
   useStyleContext,
 } from '@gluestack-ui/nativewind-utils/withStyleContext';
-import { withStyleContextAndStates } from '@gluestack-ui/nativewind-utils/withStyleContextAndStates';
 import { cssInterop } from 'nativewind';
 import type { VariantProps } from '@gluestack-ui/nativewind-utils';
-
-const PrimitiveIcon = React.forwardRef(
-  (
-    {
-      height,
-      width,
-      fill,
-      color,
-      size,
-      stroke = 'currentColor',
-      as: AsComp,
-      ...props
-    }: any,
-    ref?: any
-  ) => {
-    const sizeProps = useMemo(() => {
-      if (size) return { size };
-      if (height && width) return { height, width };
-      if (height) return { height };
-      if (width) return { width };
-      return {};
-    }, [size, height, width]);
-
-    const colorProps =
-      stroke === 'currentColor' && color !== undefined ? color : stroke;
-
-    if (AsComp) {
-      return (
-        <AsComp
-          ref={ref}
-          fill={fill}
-          {...props}
-          {...sizeProps}
-          stroke={colorProps}
-        />
-      );
-    }
-    return (
-      <Svg
-        ref={ref}
-        height={height}
-        width={width}
-        fill={fill}
-        stroke={colorProps}
-        {...props}
-      />
-    );
-  }
-);
+import { PrimitiveIcon, UIIcon } from '@gluestack-ui/icon';
 
 const SCOPE = 'FAB';
+const Root = withStyleContext(Pressable, SCOPE);
 const UIFab = createFab({
-  Root:
-    Platform.OS === 'web'
-      ? withStyleContext(Pressable, SCOPE)
-      : withStyleContextAndStates(Pressable, SCOPE),
+  Root: Root,
   Label: Text,
-  Icon: PrimitiveIcon,
+  Icon: UIIcon,
 });
 
-cssInterop(UIFab, { className: 'style' });
-cssInterop(UIFab.Label, { className: 'style' });
-cssInterop(UIFab.Icon, {
+cssInterop(PrimitiveIcon, {
   className: {
     target: 'style',
     nativeStyleToProp: {
       height: true,
       width: true,
-      // @ts-ignore
       fill: true,
-      color: true,
+      color: 'classNameColor',
       stroke: true,
     },
   },
@@ -155,7 +99,7 @@ const fabLabelStyle = tva({
 });
 
 const fabIconStyle = tva({
-  base: 'text-typography-50 hover:text-typography-0 active:text-typography-0 fill-none',
+  base: 'text-typography-50 fill-none',
   variants: {
     size: {
       '2xs': 'h-3 w-3',
@@ -168,18 +112,11 @@ const fabIconStyle = tva({
   },
 });
 
-type IFabProps = Omit<React.ComponentProps<typeof UIFab>, 'context'> &
+type IFabProps = Omit<React.ComponentPropsWithoutRef<typeof UIFab>, 'context'> &
   VariantProps<typeof fabStyle>;
-const Fab = React.forwardRef(
-  (
-    {
-      size = 'md',
-      placement = 'bottom right',
-      className,
-      ...props
-    }: { className?: string } & IFabProps,
-    ref?: any
-  ) => {
+
+const Fab = React.forwardRef<React.ElementRef<typeof UIFab>, IFabProps>(
+  ({ size = 'md', placement = 'bottom right', className, ...props }, ref) => {
     return (
       <UIFab
         ref={ref}
@@ -191,9 +128,13 @@ const Fab = React.forwardRef(
   }
 );
 
-type IFabLabelProps = React.ComponentProps<typeof UIFab.Label> &
+type IFabLabelProps = React.ComponentPropsWithoutRef<typeof UIFab.Label> &
   VariantProps<typeof fabLabelStyle>;
-const FabLabel = React.forwardRef(
+
+const FabLabel = React.forwardRef<
+  React.ElementRef<typeof UIFab.Label>,
+  IFabLabelProps
+>(
   (
     {
       size,
@@ -203,8 +144,8 @@ const FabLabel = React.forwardRef(
       strikeThrough = false,
       className,
       ...props
-    }: { className?: string } & IFabLabelProps,
-    ref?: any
+    },
+    ref
   ) => {
     const { size: parentSize } = useStyleContext(SCOPE);
     return (
@@ -227,58 +168,50 @@ const FabLabel = React.forwardRef(
   }
 );
 
-type IFabIconProps = React.ComponentProps<typeof UIFab.Icon> &
+type IFabIconProps = React.ComponentPropsWithoutRef<typeof UIFab.Icon> &
   VariantProps<typeof fabIconStyle>;
-const FabIcon = React.forwardRef(
-  (
-    {
-      size,
-      className,
-      ...props
-    }: {
-      className?: string;
-      as?: any;
-    } & IFabIconProps,
-    ref?: any
-  ) => {
-    const { size: parentSize } = useStyleContext(SCOPE);
 
-    if (typeof size === 'number') {
-      return (
-        <UIFab.Icon
-          ref={ref}
-          {...props}
-          className={fabIconStyle({ class: className })}
-          size={size}
-        />
-      );
-    } else if (
-      (props.height !== undefined || props.width !== undefined) &&
-      size === undefined
-    ) {
-      return (
-        <UIFab.Icon
-          ref={ref}
-          {...props}
-          className={fabIconStyle({ class: className })}
-        />
-      );
-    }
+const FabIcon = React.forwardRef<
+  React.ElementRef<typeof UIFab.Icon>,
+  IFabIconProps
+>(({ size, className, ...props }, ref) => {
+  const { size: parentSize } = useStyleContext(SCOPE);
+
+  if (typeof size === 'number') {
     return (
       <UIFab.Icon
         ref={ref}
         {...props}
-        className={fabIconStyle({
-          parentVariants: {
-            size: parentSize,
-          },
-          size,
-          class: className,
-        })}
+        className={fabIconStyle({ class: className })}
+        size={size}
+      />
+    );
+  } else if (
+    (props.height !== undefined || props.width !== undefined) &&
+    size === undefined
+  ) {
+    return (
+      <UIFab.Icon
+        ref={ref}
+        {...props}
+        className={fabIconStyle({ class: className })}
       />
     );
   }
-);
+  return (
+    <UIFab.Icon
+      ref={ref}
+      {...props}
+      className={fabIconStyle({
+        parentVariants: {
+          size: parentSize,
+        },
+        size,
+        class: className,
+      })}
+    />
+  );
+});
 
 Fab.displayName = 'Fab';
 FabLabel.displayName = 'FabLabel';

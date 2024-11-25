@@ -1,76 +1,16 @@
-import React, { useMemo } from 'react';
+'use client';
+import React from 'react';
 import { createIcon } from '@gluestack-ui/icon';
 import { tva } from '@gluestack-ui/nativewind-utils/tva';
-
-const accessClassName = (style: any) => {
-  const obj = style[0];
-  const keys = Object.keys(obj); //will return an array of keys
-  return obj[keys[1]];
-};
-
-const Svg = ({ style, className, ...props }: any) => {
-  const calculateClassName = useMemo(() => {
-    return className === undefined ? accessClassName(style) : className;
-  }, [className, style]);
-
-  return <svg {...props} className={calculateClassName} />;
-};
-
-const PrimitiveIcon = React.forwardRef(
-  (
-    {
-      height,
-      width,
-      fill,
-      color,
-      size,
-      stroke = 'currentColor',
-      as: AsComp,
-      ...props
-    }: any,
-    ref?: any
-  ) => {
-    const sizeProps = useMemo(() => {
-      if (size) return { size };
-      if (height && width) return { height, width };
-      if (height) return { height };
-      if (width) return { width };
-      return {};
-    }, [size, height, width]);
-
-    const colorProps =
-      stroke === 'currentColor' && color !== undefined ? color : stroke;
-
-    if (AsComp) {
-      return (
-        <AsComp
-          ref={ref}
-          fill={fill}
-          {...props}
-          {...sizeProps}
-          stroke={colorProps}
-        />
-      );
-    }
-    return (
-      <Svg
-        ref={ref}
-        height={height}
-        width={width}
-        fill={fill}
-        stroke={colorProps}
-        {...props}
-      />
-    );
-  }
-);
+import { VariantProps } from '@gluestack-ui/nativewind-utils';
+import { PrimitiveIcon, Svg } from '@gluestack-ui/icon';
 
 export const UIIcon = createIcon({
   Root: PrimitiveIcon,
 });
 
 const iconStyle = tva({
-  base: 'text-typography-950 fill-none',
+  base: 'text-typography-950 fill-none pointer-events-none',
   variants: {
     size: {
       '2xs': 'h-3 w-3',
@@ -83,54 +23,73 @@ const iconStyle = tva({
   },
 });
 
-export const Icon = React.forwardRef(
-  ({ size = 'md', className, ...props }: any, ref?: any) => {
-    if (typeof size === 'number') {
-      return (
-        <UIIcon
-          ref={ref}
-          {...props}
-          className={iconStyle({ class: className })}
-          size={size}
-        />
-      );
-    } else if (
-      (props.height !== undefined || props.width !== undefined) &&
-      size === undefined
-    ) {
-      return (
-        <UIIcon
-          ref={ref}
-          {...props}
-          className={iconStyle({ class: className })}
-        />
-      );
+export const Icon = React.forwardRef<
+  React.ElementRef<typeof UIIcon>,
+  React.ComponentPropsWithoutRef<typeof UIIcon> &
+    VariantProps<typeof iconStyle> & {
+      height?: number | string;
+      width?: number | string;
     }
+>(({ size = 'md', className, ...props }, ref) => {
+  if (typeof size === 'number') {
     return (
       <UIIcon
         ref={ref}
         {...props}
-        className={iconStyle({ size, class: className })}
+        className={iconStyle({ class: className })}
+        size={size}
+      />
+    );
+  } else if (
+    (props.height !== undefined || props.width !== undefined) &&
+    size === undefined
+  ) {
+    return (
+      <UIIcon
+        ref={ref}
+        {...props}
+        className={iconStyle({ class: className })}
       />
     );
   }
-);
+  return (
+    <UIIcon
+      ref={ref}
+      {...props}
+      className={iconStyle({ size, class: className })}
+    />
+  );
+});
 
 type ParameterTypes = Omit<Parameters<typeof createIcon>[0], 'Root'>;
 
-const createIconUI = ({ ...props }: ParameterTypes) => {
-  const UIIcon = createIcon({ Root: Svg, ...props });
+const accessClassName = (style: any) => {
+  const styleObject = Array.isArray(style) ? style[0] : style;
+  const keys = Object.keys(styleObject);
+  return styleObject[keys[1]];
+};
 
-  return React.forwardRef(({ className, size, ...props }: any, ref) => {
+const createIconUI = ({ ...props }: ParameterTypes) => {
+  const NewUIIcon = createIcon({ Root: Svg, ...props });
+  return React.forwardRef<
+    React.ElementRef<typeof UIIcon>,
+    React.ComponentPropsWithoutRef<typeof UIIcon> &
+      VariantProps<typeof iconStyle> & {
+        height?: number | string;
+        width?: number | string;
+      }
+  >(({ className, ...inComingprops }, ref) => {
+    const calculateClassName = React.useMemo(() => {
+      return className === undefined
+        ? accessClassName(inComingprops?.style)
+        : className;
+    }, [className, inComingprops?.style]);
     return (
-      <UIIcon
-        ref={ref}
-        {...props}
-        className={iconStyle({ size, class: className })}
-      />
+      <NewUIIcon ref={ref} {...inComingprops} className={calculateClassName} />
     );
   });
 };
+
 export { createIconUI as createIcon };
 
 // All Icons
