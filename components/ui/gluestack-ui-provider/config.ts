@@ -153,6 +153,12 @@ export const config = {
     '--color-indicator-primary': '55 55 55',
     '--color-indicator-info': '83 153 236',
     '--color-indicator-error': '185 28 28',
+
+    /* Content for text color */
+    "--color-content-50": "252 252 252",
+
+    /* Shade for background color */
+    "--color-shade-0": "38 38 38",
   }),
   dark: vars({
     '--color-primary-0': '166 166 166',
@@ -305,5 +311,11 @@ export const config = {
     '--color-indicator-primary': '247 247 247',
     '--color-indicator-info': '161 199 245',
     '--color-indicator-error': '232 70 69',
+
+    /* Content for text color */
+    "--color-content-50": "219 219 219",
+
+    /* Shade for background color */
+    "--color-shade-0": "64 64 64",
   }),
 };

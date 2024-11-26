@@ -17,9 +17,9 @@ import { ThemeContext } from "@/App";
 const Header = React.memo(() => {
   const { colorMode } = useContext(ThemeContext);
   return (
-    <Box>
+    <>
       {/* big screen */}
-      <Box className="px-16 w-full border-b hidden md:flex border-outline-100">
+      <Box className="px-16 w-full border-b hidden md:flex border-outline-100 min-h-20">
         <HStack className="items-center justify-between mx-auto w-full">
           <HomestayLogo />
           <HeaderTabs />
@@ -41,7 +41,7 @@ const Header = React.memo(() => {
           </InputSlot>
         </Input>
       </Box>
-    </Box>
+    </>
   );
 });
 export default Header;

@@ -28,11 +28,11 @@ const Explorepage = ({ activeTab, setActiveTab }: any) => {
       </ScrollView>
 
       {/* web */}
-      <HStack className="w-full hidden md:flex">
+      <HStack className="w-full hidden md:flex flex-1">
         <WebSidebar />
-        {/* <ScrollView style={{ flex: 1 }}> */}
+        <ScrollView style={{ flex: 1 }}>
         <MainContent setActiveTab={setActiveTab} activeTab={activeTab} />
-        {/* </ScrollView> */}
+        </ScrollView>
       </HStack>
     </>
   );

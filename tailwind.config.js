@@ -3,7 +3,11 @@ const gluestackPlugin = require('@gluestack-ui/nativewind-utils/tailwind-plugin'
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "media",
-  content: ["App.{tsx,jsx,ts,js}", "components/**/*.{tsx,jsx,ts,js}"],
+  content: [
+    "./kitchensink-components/**/**/*.{html,js,jsx,ts,tsx}",
+    "./components/ui/**/*.{html,js,jsx,ts,tsx}",
+    "./App.{html,js,jsx,ts,tsx}",
+  ],
   presets: [require('nativewind/preset')],
   theme: {
     extend: {
@@ -161,6 +165,13 @@ module.exports = {
           primary: 'rgb(var(--color-indicator-primary)/<alpha-value>)',
           info: 'rgb(var(--color-indicator-info)/<alpha-value>)',
           error: 'rgb(var(--color-indicator-error)/<alpha-value>)',
+        },
+        content: {
+          0: "#FCFCFC",
+          50: "rgb(var(--color-content-50)/<alpha-value>)",
+        },
+        shade: {
+          0: "rgb(var(--color-shade-0)/<alpha-value>)",
         },
       },
       fontFamily: {
