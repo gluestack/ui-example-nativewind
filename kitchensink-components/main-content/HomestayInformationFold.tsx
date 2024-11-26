@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import {
   Box,
   HStack,
@@ -15,7 +15,6 @@ import {
 import { ChevronRight, Heart } from "lucide-react-native";
 import { AnimatePresence, Motion } from "@legendapp/motion";
 import { ScrollView } from "react-native";
-import { ThemeContext } from "../../App";
 
 const tabsData = [
   {
@@ -368,13 +367,12 @@ const HomestayInfoTabs = ({ tabs, activeTab, setActiveTab }: any) => {
 
 const TabPanelData = ({ activeTab }: any) => {
   const [likes, setLikes]: any = React.useState([]);
-  const { colorMode } = useContext(ThemeContext);
 
   return (
     <VStack className="justify-between lg:flex-row">
-      {tabsData.map((tab) => {
+      {tabsData.map((tab, index) => {
         return (
-          <>
+          <Box key={index} className="lg:flex-row">
             {tab.name.toLowerCase() === activeTab.title.toLowerCase() &&
               tab.data.map((image: any, index: any) => {
                 return (
@@ -522,7 +520,7 @@ const TabPanelData = ({ activeTab }: any) => {
                   </Box>
                 );
               })}
-          </>
+          </Box>
         );
       })}
     </VStack>

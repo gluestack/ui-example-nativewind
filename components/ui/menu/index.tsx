@@ -3,10 +3,9 @@ import React from 'react';
 import { createMenu } from '@gluestack-ui/menu';
 import { tva } from '@gluestack-ui/nativewind-utils/tva';
 import { cssInterop } from 'nativewind';
-import { Pressable, Text, Platform } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import { Motion, AnimatePresence } from '@legendapp/motion';
 import type { VariantProps } from '@gluestack-ui/nativewind-utils';
-import { withStates } from '@gluestack-ui/nativewind-utils/withStates';
 
 const menuStyle = tva({
   base: 'rounded-md bg-background-0 border border-outline-100 p-1 shadow-hard-5',
@@ -20,6 +19,10 @@ const menuBackdropStyle = tva({
   base: 'absolute top-0 bottom-0 left-0 right-0 web:cursor-default',
   // add this classnames if you want to give background color to backdrop
   // opacity-50 bg-background-500,
+});
+
+const menuSeparatorStyle = tva({
+  base: 'bg-background-200 h-px w-full',
 });
 
 const menuItemLabelStyle = tva({
@@ -63,57 +66,70 @@ const menuItemLabelStyle = tva({
   },
 });
 
-const BackdropPressable = React.forwardRef(
+const BackdropPressable = React.forwardRef<
+  React.ElementRef<typeof Pressable>,
+  React.ComponentPropsWithoutRef<typeof Pressable> &
+    VariantProps<typeof menuBackdropStyle>
+>(({ className, ...props }, ref) => {
+  return (
+    <Pressable
+      ref={ref}
+      className={menuBackdropStyle({
+        class: className,
+      })}
+      {...props}
+    />
+  );
+});
+
+type IMenuItemProps = VariantProps<typeof menuItemStyle> & {
+  className?: string;
+} & React.ComponentPropsWithoutRef<typeof Pressable>;
+
+const Item = React.forwardRef<
+  React.ElementRef<typeof Pressable>,
+  IMenuItemProps
+>(({ className, ...props }, ref) => {
+  return (
+    <Pressable
+      ref={ref}
+      className={menuItemStyle({
+        class: className,
+      })}
+      {...props}
+    />
+  );
+});
+
+const Separator = React.forwardRef(
   ({ className, ...props }: any, ref?: any) => {
     return (
-      <Pressable
+      <View
         ref={ref}
-        className={menuBackdropStyle({
-          class: className,
-        })}
+        className={menuSeparatorStyle({ class: className })}
         {...props}
       />
     );
   }
 );
-
-type IMenuItemProps = VariantProps<typeof menuItemStyle>;
-
-const Item = React.forwardRef(
-  (
-    { className, ...props }: { className?: string } & IMenuItemProps,
-    ref?: any
-  ) => {
-    return (
-      <Pressable
-        ref={ref}
-        className={menuItemStyle({
-          class: className,
-        })}
-        {...props}
-      />
-    );
-  }
-);
-
 export const UIMenu = createMenu({
   Root: Motion.View,
-  Item: Platform.OS === 'web' ? Item : withStates(Item),
+  Item: Item,
   Label: Text,
   Backdrop: BackdropPressable,
   AnimatePresence: AnimatePresence,
+  Separator: Separator,
 });
 
-cssInterop(UIMenu, { className: 'style' });
-cssInterop(UIMenu.ItemLabel, { className: 'style' });
+cssInterop(Motion.View, { className: 'style' });
 
 type IMenuProps = React.ComponentProps<typeof UIMenu> &
-  VariantProps<typeof menuStyle>;
+  VariantProps<typeof menuStyle> & { className?: string };
 type IMenuItemLabelProps = React.ComponentProps<typeof UIMenu.ItemLabel> &
-  VariantProps<typeof menuItemLabelStyle>;
+  VariantProps<typeof menuItemLabelStyle> & { className?: string };
 
-const Menu = React.forwardRef(
-  ({ className, ...props }: { className?: string } & IMenuProps, ref?: any) => {
+const Menu = React.forwardRef<React.ElementRef<typeof UIMenu>, IMenuProps>(
+  ({ className, ...props }, ref) => {
     return (
       <UIMenu
         ref={ref}
@@ -144,7 +160,10 @@ const Menu = React.forwardRef(
 
 const MenuItem = UIMenu.Item;
 
-const MenuItemLabel = React.forwardRef(
+const MenuItemLabel = React.forwardRef<
+  React.ElementRef<typeof UIMenu.ItemLabel>,
+  IMenuItemLabelProps
+>(
   (
     {
       className,
@@ -157,8 +176,8 @@ const MenuItemLabel = React.forwardRef(
       italic,
       highlight,
       ...props
-    }: { className?: string } & IMenuItemLabelProps,
-    ref?: any
+    },
+    ref
   ) => {
     return (
       <UIMenu.ItemLabel
@@ -180,8 +199,10 @@ const MenuItemLabel = React.forwardRef(
   }
 );
 
+const MenuSeparator = UIMenu.Separator;
+
 Menu.displayName = 'Menu';
 MenuItem.displayName = 'MenuItem';
 MenuItemLabel.displayName = 'MenuItemLabel';
-
-export { Menu, MenuItem, MenuItemLabel };
+MenuSeparator.displayName = 'MenuSeperator';
+export { Menu, MenuItem, MenuItemLabel, MenuSeparator };

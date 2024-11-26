@@ -4,10 +4,10 @@ import { HStack, Link, LinkText, Text } from "../components/ui";
 const Banner = () => {
   return (
     <HStack
-      className="justify-center items-center h-16 bg-shade-0"
+      className="justify-center items-center min-h-16 bg-shade-0"
       space="sm"
     >
-      <Text className="text-content-0 " size="sm">
+      <Text className="text-content-0" size="sm">
         Show total prices up front
       </Text>
       <Link href="https://ui.gluestack.io">
