@@ -29,7 +29,7 @@ For detailed information on each component and its props, refer to the documenta
 
 ## Give it a shot!
 [Try it in your browser](https://ui-example-nativewind.vercel.app) or scan the QR code below <br/><br/>
-<img src="https://qr.expo.dev/eas-update?slug=exp&projectId=42cce9b5-9fbe-4572-92ba-fc43b2437a85&groupId=f8394218-7559-4ca9-8e98-697835723cbe&host=u.expo.dev" alt="expo-icon" width="200" height="200"/> <br/>
+<img src="https://qr.expo.dev/eas-update?slug=exp&projectId=42cce9b5-9fbe-4572-92ba-fc43b2437a85&groupId=5a598f1d-f9ad-4f4e-ab64-da240438da2b&host=u.expo.dev" alt="expo-icon" width="200" height="200"/> <br/>
 with the Expo Go app on your phone.
 
 ## Created By GeekyAnts
